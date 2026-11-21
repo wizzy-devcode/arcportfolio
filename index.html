@@ -1,1378 +1,746 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wizzy Danlami — Architectural Designer & BIM Visualizer (Abuja & Kaduna)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emmanuel Danlami — Architectural Designer, Abuja & Kaduna</title>
+<meta name="description" content="Emmanuel Danlami designs modern homes — bungalows, duplexes and penthouses — with photo-real 3D renders. Based in Abuja & Kaduna, working with clients worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   EASY STYLE EDITS — change these colours to restyle the site
+   ========================================================= */
+:root{
+  --cream:#faf6f0;      /* page background */
+  --sand:#f1e8dc;       /* soft section background */
+  --ink:#2b2420;        /* main text */
+  --soft:#6f655d;       /* secondary text */
+  --clay:#c0643b;       /* main accent (buttons, highlights) */
+  --clay-dark:#a4522e;
+  --sage:#6f7f5e;       /* second accent */
+  --line:#e6dccf;
+  --white:#fff;
+  --card:#fff;        /* card backgrounds */
+  --tint:#f6e4d8;     /* soft clay tint */
+  --radius:22px;
+  --shadow:0 18px 50px -20px rgba(60,40,25,.25);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'DM Sans',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+/* Dark mode colours */
+[data-theme="dark"]{--cream:#16171a;--sand:#1e1f23;--ink:#ece6da;--soft:#a8a197;--line:#34353b;--white:#1a1b1f;--card:#222328;--tint:#3a2a22;--clay:#d9774a;--clay-dark:#c0643b;--shadow:0 18px 50px -20px rgba(0,0,0,.6)}
+body{transition:background-color .3s,color .3s}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(34px,4.4vw,52px)}
+h2 em,h1 em{font-style:italic;color:var(--clay)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--clay);background:var(--tint);padding:6px 14px;border-radius:99px;margin-bottom:18px}
+.lead{font-size:19px;color:var(--soft)}
+section{padding:110px 0}
+.center{text-align:center}
+.center .lead{max-width:620px;margin:16px auto 0}
+:focus-visible{outline:3px solid var(--clay);outline-offset:3px;border-radius:8px}
 
-  <!-- =======================================================================
-       STEP 1: ADD YOUR PROFILE PHOTO RIGHT HERE
-       =======================================================================
-       HOW TO USE:
-       1. Save your photo in the SAME folder as this index.html file
-          (for example: wizzy.jpg).
-       2. Replace the link inside MY_PROFILE_PHOTO below with "wizzy.jpg"
-          (or paste any direct image URL).
-       3. It will automatically update BOTH your Principal Designer portrait
-          and your Commission Inquiry avatar across the entire website!
-  ======================================================================== -->
-  <script>
-    var MY_PROFILE_PHOTO = "wizzy.jpg";
-    var MY_PHOTO_FOCUS   = "center 22%"; // Adjust vertical framing if needed (e.g. "center top", "center 20%")
-  </script>
-  <!-- =======================================================================
-       END OF PROFILE PHOTO CONFIGURATION
-  ======================================================================== -->
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:99px;font:600 16px var(--sans);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:.25s}
+.btn-primary{background:var(--clay);color:#fff}
+.btn-primary:hover{background:var(--clay-dark);transform:translateY(-2px);box-shadow:0 12px 24px -10px var(--clay)}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+.btn-white{background:#ffffff;color:#2b2420}
+.btn-white:hover{transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
 
-  <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Space Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+/* Nav (architect style) */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cream) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.mark{width:50px;height:42px;border:1.5px solid var(--ink);display:grid;place-items:center;font-family:var(--serif);font-size:16px;letter-spacing:.04em;position:relative;flex:none}
+.mark::after{content:"";position:absolute;right:-6px;bottom:-6px;width:11px;height:11px;background:var(--clay)}
+.logo b{font-family:'Inter Tight',var(--sans);font-weight:600;font-size:18px;display:block;line-height:1.15;letter-spacing:-.01em}
+.logo small{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.menu{display:flex;gap:34px;list-style:none;align-items:center}
+.menu a{text-decoration:none;font-family:'Inter Tight',var(--sans);font-weight:500;font-size:16.5px;display:inline-flex;align-items:baseline;gap:7px;padding:6px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.menu a i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--clay)}
+.menu a:hover{color:var(--clay)}
+.menu a.active{color:var(--clay);border-bottom-color:var(--clay)}
+.nav-r{display:flex;align-items:center;gap:12px}
+.theme{width:44px;height:44px;border:1px solid var(--line);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.2s}
+.theme:hover{border-color:var(--ink)}
+.theme svg{width:18px;height:18px}
+.start{display:inline-flex;align-items:center;height:44px;padding:0 22px;background:var(--clay);color:#fff;text-decoration:none;font-family:'Inter Tight',var(--sans);font-weight:600;font-size:16px;transition:.2s}
+.start:hover{background:var(--clay-dark)}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;place-items:center}
+.menu .m-start{display:none}
+footer .mark{border-color:#fff;color:#fff}
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+/* Hero */
+.hero{padding:56px 0 90px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:center}
+.hello{font-size:18px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.wave{display:inline-block;animation:wave 2.4s ease-in-out infinite;transform-origin:70% 70%}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}}
+.hero h1{font-size:clamp(42px,5.6vw,72px);margin-bottom:22px}
+.hero .lead{max-width:520px;margin-bottom:34px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:38px;font-size:15px;color:var(--soft)}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;color:var(--sage)}
+.collage{position:relative;height:580px}
+.collage .main{position:absolute;inset:0 70px 60px 0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.collage .main img{width:100%;height:100%;object-fit:cover;transition:opacity 1s}
+.collage .mini{position:absolute;border-radius:18px;overflow:hidden;border:6px solid var(--cream);box-shadow:var(--shadow)}
+.collage .mini img{width:100%;height:100%;object-fit:cover}
+.mini.m1{right:0;bottom:0;width:250px;height:200px}
+.mini.m2{right:10px;top:40px;width:170px;height:150px}
+.note{position:absolute;left:-26px;bottom:110px;background:var(--card);border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;font-size:14.5px;line-height:1.35}
+.note b{display:block;font-size:15.5px}
+.live{width:11px;height:11px;border-radius:50%;background:#3aa65c;box-shadow:0 0 0 0 rgba(58,166,92,.6);animation:pulse 2s infinite;flex:none}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(58,166,92,0)}100%{box-shadow:0 0 0 0 rgba(58,166,92,0)}}
 
-  <!-- Theme Initialization (Runs before paint to prevent flash) -->
-  <script>
-    (function () {
-      try {
-        var savedTheme = localStorage.getItem('wizzy-atelier-theme');
-        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-          document.documentElement.classList.add('dark');
-        }
-      } catch (e) {}
-    })();
-  </script>
+/* Numbers */
+.numbers{background:#2b2420;color:#faf6f0;padding:46px 0}
+.numbers .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.num b{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1;display:block;color:#f3c9ad}
+.num span{font-size:15px;opacity:.8}
 
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            stoneBg: 'rgb(var(--color-stone-bg) / <alpha-value>)',
-            stoneCard: 'rgb(var(--color-stone-card) / <alpha-value>)',
-            charcoal: 'rgb(var(--color-charcoal) / <alpha-value>)',
-            charcoalMuted: 'rgb(var(--color-charcoal-muted) / <alpha-value>)',
-            terracotta: 'rgb(var(--color-terracotta) / <alpha-value>)',
-            hairline: 'rgb(var(--color-hairline) / <alpha-value>)'
-          },
-          fontFamily: {
-            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            mono: ['"Space Mono"', 'monospace']
-          }
-        }
-      }
-    };
-  </script>
+/* Work */
+.filters{display:flex;justify-content:center;gap:10px;margin:36px 0 44px;flex-wrap:wrap}
+.filters button{border:1.5px solid var(--line);background:var(--card);padding:10px 20px;border-radius:99px;font:500 15px var(--sans);cursor:pointer;color:var(--ink);transition:.2s}
+.filters button:hover{border-color:var(--ink)}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:34px}
+.project{background:var(--card);border-radius:var(--radius);overflow:hidden;cursor:pointer;border:0;text-align:left;font:inherit;color:inherit;padding:0;box-shadow:0 2px 0 var(--line);transition:.35s}
+.project:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.project .ph{position:relative;aspect-ratio:4/3;overflow:hidden}
+.project .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.project:hover .ph img{transform:scale(1.05)}
+.pill{position:absolute;left:16px;top:16px;background:rgba(255,255,255,.92);padding:6px 13px;border-radius:99px;font-size:13.5px;font-weight:600}
+.count{position:absolute;right:16px;bottom:16px;background:rgba(43,36,32,.82);color:#fff;padding:8px 14px;border-radius:99px;font-size:14px;display:flex;gap:7px;align-items:center;transition:.3s}
+.project:hover .count{background:var(--clay)}
+.project .info{padding:24px 26px 28px}
+.project h3{font-size:28px;margin-bottom:6px}
+.project p{color:var(--soft);font-size:16px}
+.facts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.facts span{background:var(--sand);padding:5px 12px;border-radius:99px;font-size:13.5px}
+.project.hide{display:none}
 
-  <style>
-    /* Adaptive Light (Warm Limestone) & Dark (Smoked Basalt) Palette */
-    :root {
-      --color-stone-bg: 244 242 238;
-      --color-stone-card: 235 232 225;
-      --color-charcoal: 26 26 25;
-      --color-charcoal-muted: 92 91 87;
-      --color-terracotta: 168 74 50;
-      --color-hairline: 214 210 201;
-    }
+/* About */
+.about{background:var(--sand)}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+.portrait{position:relative}
+.portrait .frame{aspect-ratio:4/5;border-radius:200px 200px var(--radius) var(--radius);overflow:hidden;background:linear-gradient(160deg,#e7c3a8,#c0643b);display:grid;place-items:center;box-shadow:var(--shadow)}
+.portrait .frame img{width:100%;height:100%;object-fit:cover}
+.initials{font-family:var(--serif);font-size:120px;color:#fff;opacity:.9}
+.sticker{position:absolute;right:-14px;bottom:40px;background:var(--card);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);font-size:14.5px;line-height:1.4}
+.sticker b{font-family:var(--serif);font-size:22px;font-weight:500;display:block}
+.about h2{margin-bottom:22px}
+.about p{margin-bottom:16px;color:var(--soft)}
+.about p.big{font-family:var(--serif);font-size:24px;line-height:1.4;color:var(--ink)}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0}
+.value{background:var(--cream);border-radius:16px;padding:18px}
+.value .ic{font-size:24px;margin-bottom:6px}
+.value b{display:block;font-size:16px;margin-bottom:4px}
+.value span{font-size:14.5px;color:var(--soft);line-height:1.5;display:block}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools small{font-weight:600;margin-right:6px}
+.tools span{background:var(--card);padding:7px 14px;border-radius:99px;font-size:14px;border:1px solid var(--line)}
 
-    html.dark {
-      --color-stone-bg: 18 18 17;
-      --color-stone-card: 28 27 25;
-      --color-charcoal: 242 239 233;
-      --color-charcoal-muted: 163 159 150;
-      --color-terracotta: 214 108 78;
-      --color-hairline: 48 46 42;
-    }
+/* Services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.service{background:var(--card);border-radius:var(--radius);padding:34px 30px;border:1px solid var(--line);transition:.3s;display:flex;flex-direction:column}
+.service:hover{border-color:var(--clay);transform:translateY(-4px)}
+.service .ic{width:58px;height:58px;border-radius:16px;background:var(--tint);color:var(--clay);display:grid;place-items:center;margin-bottom:22px}
+.service .ic svg{width:28px;height:28px}
+.service h3{font-size:26px;margin-bottom:10px}
+.service p{color:var(--soft);font-size:16px;flex:1}
+.service .good{margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-size:14.5px}
+.service .good b{color:var(--sage)}
 
-    body {
-      background-color: rgb(var(--color-stone-bg));
-      color: rgb(var(--color-charcoal));
-      overflow-x: hidden;
-      transition: background-color 0.35s ease, color 0.35s ease;
-    }
+/* Steps */
+.steps-sec{background:var(--white)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px;counter-reset:s}
+.step{position:relative;padding-top:68px}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;width:50px;height:50px;border-radius:50%;background:var(--clay);color:#fff;font:500 22px var(--serif);display:grid;place-items:center}
+.step::after{content:"";position:absolute;top:25px;left:62px;right:-12px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px)}
+.step:last-child::after{display:none}
+.step h4{font-size:23px;margin-bottom:8px}
+.step p{color:var(--soft);font-size:16px}
 
-    /* Subtle architectural paper grain */
-    .paper-grain {
-      background-image: radial-gradient(rgba(128, 124, 116, 0.14) 1px, transparent 0);
-      background-size: 24px 24px;
-    }
+/* CTA */
+.cta{padding:0 0 110px;background:var(--white)}
+.cta-card{border-radius:32px;overflow:hidden;position:relative;color:#fff;padding:80px 60px;min-height:380px;display:flex;align-items:center}
+.cta-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta-card::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,22,17,.88),rgba(30,22,17,.35));z-index:1}
+.cta-card > div{position:relative;z-index:2;max-width:560px}
+.cta-card h2{color:#fff;margin-bottom:16px}
+.cta-card h2 em{color:#f3c9ad}
+.cta-card p{opacity:.9;margin-bottom:28px;font-size:18px}
 
-    /* Smooth image scale on hover */
-    .project-card-img {
-      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
-    }
-    .project-card:hover .project-card-img {
-      transform: scale(1.035);
-    }
+/* FAQ */
+.faq{max-width:780px;margin:48px auto 0}
+.faq details{background:var(--card);border-radius:16px;margin-bottom:12px;border:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 26px;font-weight:600;font-size:17.5px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";width:30px;height:30px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:20px;flex:none;transition:.25s}
+.faq details[open] summary::after{transform:rotate(45deg);background:var(--clay);color:#fff}
+.faq details p{padding:0 26px 22px;color:var(--soft)}
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgb(var(--color-stone-bg));
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgb(var(--color-hairline));
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgb(var(--color-charcoal-muted));
-    }
+/* Contact (architect style) */
+.contact{background:var(--sand);background-image:linear-gradient(color-mix(in srgb,var(--ink) 5%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--ink) 5%,transparent) 1px,transparent 1px);background-size:32px 32px}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+.lbl{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.c-block{border-top:1px solid var(--line);padding:22px 0}
+.c-block .v{display:block;margin-top:8px;font-family:'Inter Tight',var(--sans);font-size:21px;text-decoration:none;word-break:break-word}
+.c-block a{text-decoration:none}
+.c-block a:hover{color:var(--clay)}
+.qa{border-top:1px solid var(--line);padding-top:26px;margin-top:10px}
+.qa details{border-bottom:1px solid var(--line);padding:18px 0}
+.qa summary{list-style:none;cursor:pointer;font-family:var(--serif);font-size:23px;display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:4px}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";color:var(--clay);font-family:var(--mono);font-size:22px;transition:.25s}
+.qa details[open] summary::after{transform:rotate(45deg)}
+.qa details p{color:var(--soft);margin-top:10px;font-size:16px}
+.brief{border:1.5px solid var(--ink);background:var(--cream);padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:34px 28px}
+.brief .full{grid-column:1/-1}
+.f .lbl{margin-bottom:10px}
+.f input,.f select,.f textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:10px 0;font:17px 'Inter Tight',var(--sans);color:var(--ink);outline:none;transition:border-color .2s}
+.f select{appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 4px center;cursor:pointer}
+.f select option{background:var(--cream);color:var(--ink)}
+.f input::placeholder,.f textarea::placeholder{color:var(--soft);opacity:.75}
+.f input:focus,.f select:focus,.f textarea:focus{border-bottom-color:var(--clay)}
+.f textarea{min-height:130px;resize:vertical}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.svc label{display:flex;align-items:center;gap:12px;border:1px solid var(--line);padding:18px 20px;cursor:pointer;font-family:'Inter Tight',var(--sans);font-size:17px;transition:.2s}
+.svc label:hover{border-color:var(--ink)}
+.svc input{accent-color:var(--clay);width:17px;height:17px;flex:none}
+.svc label:has(input:checked){background:var(--tint);border-color:var(--clay)}
+.ffoot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:6px}
+.brief .start{border:0;cursor:pointer;height:52px;padding:0 26px;font-size:17px}
+.ferr{display:none;color:#c0392b;font-size:15px;margin:-14px 0}
+.ferr.show{display:block}
+.result{display:none;border:1px dashed var(--clay);background:var(--tint);padding:22px}
+.result pre{white-space:pre-wrap;font:13.5px/1.65 var(--mono);margin:12px 0 18px}
+.rrow{display:flex;gap:10px;flex-wrap:wrap}
+.sq{display:inline-flex;align-items:center;height:52px;padding:0 22px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:600 16px 'Inter Tight',var(--sans);text-decoration:none;cursor:pointer;transition:.2s}
+.sq:hover{background:var(--ink);color:var(--cream)}
+@media (max-width:640px){.brief{grid-template-columns:1fr;padding:26px 20px;gap:28px}.svc{grid-template-columns:1fr}.c-block .v{font-size:18px}.qa summary{font-size:20px}}
 
-    /* Monograph drawer slide transition */
-    #monographModal {
-      transition: opacity 0.35s ease, visibility 0.35s ease;
-    }
-    #monographPanel {
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-  </style>
+footer{background:#1f1a17;color:#d9cfc4;padding:56px 0 40px}
+footer .top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:24px}
+footer .logo-badge{background:var(--clay)}
+footer .logo b{color:#fff}
+footer .logo small{color:#bfb3a7}
+footer nav{display:flex;gap:22px;flex-wrap:wrap}
+footer nav a{text-decoration:none;opacity:.85}
+footer nav a:hover{opacity:1;color:#f3c9ad}
+footer .bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:14px;opacity:.7}
+
+/* Floating WhatsApp */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;border-radius:99px;padding:14px 20px 14px 16px;font-weight:600;font-size:15px;box-shadow:0 12px 30px -8px rgba(37,211,102,.6);transition:.25s}
+.wa-float:hover{transform:translateY(-3px)}
+.wa-float svg{width:24px;height:24px}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(20,15,12,.94);display:none;grid-template-columns:1fr 380px}
+.lb.open{display:grid}
+.lb-stage{position:relative;display:flex;flex-direction:column;min-height:0;padding:24px}
+.lb-img{flex:1;display:grid;place-items:center;min-height:0}
+.lb-img img{max-width:100%;max-height:calc(100vh - 170px);border-radius:14px;object-fit:contain;animation:fade .35s}
+@keyframes fade{from{opacity:0;transform:scale(.98)}}
+.lb-cap{color:#fff;text-align:center;margin:12px 0;font-size:15px;opacity:.85}
+.lb-thumbs{display:flex;gap:8px;justify-content:center;overflow-x:auto;padding:4px}
+.lb-thumbs button{width:74px;height:56px;border-radius:9px;overflow:hidden;border:2px solid transparent;opacity:.5;cursor:pointer;padding:0;flex:none;background:none;transition:.2s}
+.lb-thumbs button.on,.lb-thumbs button:hover{opacity:1;border-color:#f3c9ad}
+.lb-thumbs img{width:100%;height:100%;object-fit:cover}
+.lb-nav{position:absolute;top:45%;width:52px;height:52px;border-radius:50%;border:0;color:#2b2420;background:rgba(255,255,255,.95);cursor:pointer;display:grid;place-items:center;transition:.2s}
+.lb-nav:hover{transform:scale(1.08)}
+.lb-nav svg{width:22px;height:22px}
+.lb-prev{left:30px}.lb-next{right:30px}
+.lb-panel{background:var(--cream);padding:40px 34px;overflow-y:auto;position:relative}
+.lb-close{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:0;background:var(--sand);cursor:pointer;font-size:22px}
+.lb-close:hover{background:var(--clay);color:#fff}
+.lb-panel h3{font-size:34px;margin:14px 0 14px}
+.lb-panel p{color:var(--soft);margin-bottom:22px}
+.spec{display:grid;gap:10px;margin-bottom:28px}
+.spec div{background:var(--card);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.spec span{color:var(--soft)}
+.lb-panel .btn{width:100%;justify-content:center}
+.lb-panel .hint{text-align:center;font-size:13.5px;color:var(--soft);margin-top:14px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+
+/* Responsive */
+@media (max-width:1000px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
+  .collage{height:460px}
+  .services{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+  .step::after{display:none}
+  .numbers .wrap{grid-template-columns:1fr 1fr}
+  .portrait{max-width:380px;margin:0 auto}
+  .lb{grid-template-columns:1fr;overflow-y:auto}
+  .lb-stage{padding:70px 12px 16px}
+  .lb-img img{max-height:60vh}
+  .lb-prev{left:16px}.lb-next{right:16px}
+  .lb-close{position:fixed;z-index:3;background:var(--card)}
+  .menu{position:fixed;top:76px;left:0;right:0;background:var(--cream);flex-direction:column;align-items:stretch;padding:14px 24px 26px;gap:0;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,.25);transform:translateY(-130%);transition:transform .35s;z-index:-1}
+  .menu.open{transform:none}
+  .menu a{display:flex;font-size:19px;padding:15px 0;border-bottom:1px solid var(--line)}
+  .menu a.active{border-bottom-color:var(--clay)}
+  .menu .m-start{display:block;margin-top:16px}
+  .menu .m-start a{justify-content:center;background:var(--clay);color:#fff;border:0;padding:15px}
+  .burger{display:grid}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .nav-r .start{display:none}
+  .logo small{font-size:9.5px;letter-spacing:.06em;white-space:nowrap}
+  .mark{width:46px;height:38px;font-size:14.5px}
+  .nav-r{gap:8px}
+  .logo b{font-size:16px}
+  section{padding:80px 0}
+  .projects,.values,.row2{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .collage{height:360px}
+  .collage .main{inset:0 0 50px 0}
+  .mini.m2{display:none}
+  .mini.m1{width:160px;height:130px;right:-6px}
+  .note{left:10px;bottom:20px}
+  .cta-card{padding:50px 28px}
+  .form{padding:26px 20px}
+  .wa-float span{display:none}
+  .wa-float{padding:16px}
+  .sticker{right:0}
+}
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
 </head>
-<body class="font-sans antialiased selection:bg-terracotta selection:text-stoneBg paper-grain">
+<body>
 
-  <!-- =======================================================================
-       HEADER & ARCHITECTURAL NAVIGATION
-  ======================================================================== -->
-  <header class="sticky top-0 z-40 bg-stoneBg/90 backdrop-blur-md border-b border-hairline transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
-      <!-- Architectural Monogram & Practice Title -->
-      <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
-        <div class="w-9 h-9 border border-charcoal flex items-center justify-center rounded-sm transition-colors group-hover:border-terracotta">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" class="text-charcoal group-hover:text-terracotta transition-colors">
-            <path d="M3 20H21" />
-            <path d="M5 20V8L12 4L19 8V20" />
-            <path d="M9 20V13H15V20" />
-            <line x1="12" y1="4" x2="12" y2="13" stroke-dasharray="1.5 1.5" />
-          </svg>
-        </div>
-        <div>
-          <span class="font-serif text-xl sm:text-2xl tracking-tight font-medium block leading-none">WIZZY DANLAMI</span>
-          <span class="font-mono text-[10px] tracking-[0.22em] text-charcoalMuted uppercase block mt-1">Emmanuel Danlami &bull; Design &amp; BIM</span>
-        </div>
-      </a>
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Emmanuel Danlami — home">
+      <span class="mark">EOD</span>
+      <span><b>Emmanuel Osu Danlami</b><small>Architectural Designer · BIM</small></span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#work"><i>01</i>Case Studies</a></li>
+      <li><a href="#about"><i>02</i>Profile &amp; Stack</a></li>
+      <li><a href="#services"><i>03</i>Services</a></li>
+      <li><a href="#contact"><i>04</i>Commission</a></li>
+      <li class="m-start"><a href="#contact">Start a project</a></li>
+    </ul>
+    <div class="nav-r">
+      <button class="theme" id="theme" aria-label="Switch light or dark mode" title="Light / Dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
+      </button>
+      <a class="start" href="#contact">Start a project</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
-      <!-- Desktop Navigation + Light/Dark Theme Switch -->
-      <div class="hidden md:flex items-center gap-8">
-        <nav class="flex items-center gap-8 text-xs font-mono uppercase tracking-[0.16em]">
-          <a href="#works" class="hover:text-terracotta transition-colors py-2">Case Studies</a>
-          <a href="#philosophy" class="hover:text-terracotta transition-colors py-2">Profile &amp; Stack</a>
-          <a href="#recognition" class="hover:text-terracotta transition-colors py-2">Credentials</a>
-          <a href="#contact" class="px-4 py-2.5 border border-charcoal hover:bg-charcoal hover:text-stoneBg transition-colors rounded-sm">Commission</a>
-        </nav>
+<main id="top">
 
-        <!-- Light / Dark Mode Switch Button -->
-        <button
-          type="button"
-          onclick="toggleThemeMode()"
-          aria-label="Switch between Light and Dark mode"
-          class="inline-flex items-center gap-2 px-3 py-2 border border-hairline hover:border-charcoal rounded-sm bg-stoneCard/70 text-charcoal transition-colors cursor-pointer font-mono text-[10px] uppercase tracking-[0.16em]"
-        >
-          <!-- Sun Icon (shown in Dark Mode) -->
-          <svg class="w-3.5 h-3.5 hidden dark:block text-terracotta" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="4" />
-            <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
-          </svg>
-          <!-- Moon Icon (shown in Light Mode) -->
-          <svg class="w-3.5 h-3.5 block dark:hidden text-charcoal" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-          </svg>
-          <span class="hidden dark:inline">Light</span>
-          <span class="inline dark:hidden">Dark</span>
-        </button>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="rv">
+      <p class="hello"><span class="wave">👋</span> Hi, I'm Emmanuel</p>
+      <h1>I design homes you'll <em>love</em> coming home to.</h1>
+      <p class="lead">From cosy family bungalows to five-bedroom penthouses, I turn your ideas into beautiful, practical designs — and show you exactly how your home will look in realistic 3D before a single block is laid.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#work">See my designs
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#contact">Tell me about your home</a>
       </div>
-
-      <!-- Mobile Controls: Theme Switch + Menu Button -->
-      <div class="flex md:hidden items-center gap-2">
-        <button
-          type="button"
-          onclick="toggleThemeMode()"
-          aria-label="Switch between Light and Dark mode"
-          class="p-2.5 border border-hairline rounded-sm bg-stoneCard/70 text-charcoal hover:border-charcoal transition-colors cursor-pointer"
-        >
-          <svg class="w-4 h-4 hidden dark:block text-terracotta" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="4" />
-            <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
-          </svg>
-          <svg class="w-4 h-4 block dark:hidden text-charcoal" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-          </svg>
-        </button>
-
-        <button
-          id="mobileMenuBtn"
-          type="button"
-          onclick="toggleMobileMenu()"
-          aria-label="Toggle Menu"
-          class="p-2.5 border border-hairline rounded-sm text-charcoal hover:border-charcoal cursor-pointer"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10" />
-          </svg>
-        </button>
+      <div class="trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Abuja &amp; Kaduna, Nigeria</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Clients worldwide</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Replies within 24 hours</span>
       </div>
     </div>
-
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobileMenu" class="hidden md:hidden border-t border-hairline bg-stoneBg px-6 py-6 space-y-4 font-mono text-xs uppercase tracking-[0.18em]">
-      <a href="#works" onclick="closeMobileMenu()" class="block py-2 hover:text-terracotta">01 / Abuja &amp; Kaduna Works</a>
-      <a href="#philosophy" onclick="closeMobileMenu()" class="block py-2 hover:text-terracotta">02 / Profile &amp; Software Stack</a>
-      <a href="#recognition" onclick="closeMobileMenu()" class="block py-2 hover:text-terracotta">03 / Nasarawa Poly Credentials</a>
-      <a href="#contact" onclick="closeMobileMenu()" class="block py-2 text-terracotta font-bold">04 / Commission Inquiry</a>
+    <div class="collage rv">
+      <div class="main"><img id="heroMain" src="images/3bed-front-dusk.jpg" alt="3-bedroom bungalow at dusk, designed by Emmanuel Danlami"></div>
+      <div class="mini m2"><img src="images/4bed1-pergola.jpg" alt="Pergola with climbing plants"></div>
+      <div class="mini m1"><img src="images/5bed-front-side-balcony.jpg" alt="5-bedroom penthouse with balcony"></div>
+      <div class="note"><span class="live"></span><span><b>Taking new projects</b>Let's plan your home</span></div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- =======================================================================
-       HERO SECTION — EDITORIAL ARCHITECTURAL MANIFESTO
-  ======================================================================== -->
-  <section id="top" class="pt-10 pb-20 sm:pt-16 sm:pb-28 border-b border-hairline">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-      <!-- Top Metadata Line -->
-      <div class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-hairline font-mono text-[11px] uppercase tracking-[0.18em] text-charcoalMuted">
-        <span>EMMANUEL &ldquo;WIZZY&rdquo; DANLAMI &bull; HND ARCH. TECH (FED. POLY NASARAWA)</span>
-        <span class="hidden sm:inline">REVIT &bull; AUTOCAD &bull; SKETCHUP &bull; ENSCAPE &bull; TWINMOTION</span>
-        <span>ABUJA FCT &amp; KADUNA STATE // 9.0765&deg; N, 7.3986&deg; E</span>
-      </div>
+<!-- ============ NUMBERS ============ -->
+<div class="numbers">
+  <div class="wrap">
+    <div class="num"><b>2–3</b><span>years designing homes</span></div>
+    <div class="num"><b>4</b><span>homes in this portfolio</span></div>
+    <div class="num"><b>14</b><span>realistic 3D renders</span></div>
+    <div class="num"><b>24h</b><span>to hear back from me</span></div>
+  </div>
+</div>
 
-      <!-- Main Editorial Headline -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pt-10 sm:pt-14 items-end">
-        <div class="lg:col-span-8">
-          <h1 class="font-serif text-4xl sm:text-6xl lg:text-[4.5rem] font-normal leading-[1.04] tracking-tight text-charcoal">
-            Smart, climate-friendly buildings crafted from local red earth and built with <span class="italic font-normal text-terracotta">honest, precise</span> craftsmanship across Northern Nigeria.
-          </h1>
-        </div>
-        <div class="lg:col-span-4 lg:pb-2">
-          <p class="text-sm sm:text-base text-charcoalMuted leading-relaxed font-light">
-            The architectural design and 3D visualization portfolio of <strong class="font-medium text-charcoal">Emmanuel &ldquo;Wizzy&rdquo; Danlami</strong>. Grounded in National &amp; Higher National Diploma training from <strong class="font-medium text-charcoal">The Federal Polytechnic, Nasarawa</strong>, crafting climate-responsive buildings across <strong class="font-medium text-charcoal">Abuja</strong> and <strong class="font-medium text-charcoal">Kaduna</strong>.
-          </p>
-          <div class="mt-6 flex flex-wrap items-center gap-5">
-            <a href="#works" class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.16em] text-charcoal border-b border-charcoal pb-1 hover:text-terracotta hover:border-terracotta transition-colors">
-              <span>Explore Abuja &amp; Kaduna Works</span>
-              <span>&darr;</span>
-            </a>
-            <a href="#philosophy" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-charcoalMuted hover:text-terracotta transition-colors pb-1">
-              <span>Designer Profile &rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Featured Hero Architectural Frame -->
-      <div class="mt-12 sm:mt-16 relative group">
-        <div class="aspect-[16/10] sm:aspect-[21/10] w-full overflow-hidden rounded-sm bg-stoneCard border border-hairline">
-          <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85"
-            alt="Zaria Courtyard Residence — Compressed Laterite Earth & Passive Savanna Shading in Kaduna State"
-            onerror="this.src='https://placehold.co/1800x900/EBE8E1/1A1A19?text=Zaria+Courtyard+Residence+%E2%80%94+Kaduna+State'"
-            class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-[1.02]"
-          />
-        </div>
-        <!-- Caption Bar below Hero Image -->
-        <div class="mt-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-[11px] text-charcoalMuted uppercase tracking-[0.14em]">
-          <span>CASE STUDY 01 // ZARIA COURTYARD RESIDENCE &mdash; GRA ZARIA, KADUNA STATE</span>
-          <span>MODELED IN REVIT &amp; SKETCHUP // RENDERED IN ENSCAPE</span>
-        </div>
-      </div>
+<!-- ============ WORK ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="kicker">✦ My work</span>
+      <h2>Homes I've <em>designed</em></h2>
+      <p class="lead">Every project is designed around the family who'll live in it. Click any home to see all its photos and details.</p>
     </div>
-  </section>
+    <div class="filters rv" id="filters"></div>
+    <div class="projects" id="projects"></div>
+  </div>
+</section>
 
-  <!-- =======================================================================
-       SELECTED WORKS & CASE STUDIES — ABUJA FCT & KADUNA STATE
-  ======================================================================== -->
-  <section id="works" class="py-20 sm:py-28 border-b border-hairline">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-      <!-- Section Header & Category Filter -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-hairline">
-        <div>
-          <span class="font-mono text-xs uppercase tracking-[0.2em] text-terracotta block mb-3">01 / Regional Portfolio</span>
-          <h2 class="font-serif text-3xl sm:text-5xl font-normal tracking-tight">Abuja &amp; Kaduna Case Studies</h2>
-        </div>
-
-        <!-- Interactive Filter Tabs -->
-        <div id="filterBar" class="flex flex-wrap gap-2" role="tablist" aria-label="Filter architectural case studies">
-          <button type="button" data-filter="all" class="filter-btn active px-4 py-2 rounded-sm font-mono text-xs uppercase tracking-[0.14em] border border-charcoal bg-charcoal text-stoneBg transition-colors cursor-pointer">
-            All (06)
-          </button>
-          <button type="button" data-filter="Residential" class="filter-btn px-4 py-2 rounded-sm font-mono text-xs uppercase tracking-[0.14em] border border-hairline text-charcoalMuted hover:border-charcoal hover:text-charcoal transition-colors cursor-pointer">
-            Residential
-          </button>
-          <button type="button" data-filter="Commercial" class="filter-btn px-4 py-2 rounded-sm font-mono text-xs uppercase tracking-[0.14em] border border-hairline text-charcoalMuted hover:border-charcoal hover:text-charcoal transition-colors cursor-pointer">
-            Commercial
-          </button>
-          <button type="button" data-filter="Civic & Cultural" class="filter-btn px-4 py-2 rounded-sm font-mono text-xs uppercase tracking-[0.14em] border border-hairline text-charcoalMuted hover:border-charcoal hover:text-charcoal transition-colors cursor-pointer">
-            Civic &amp; Cultural
-          </button>
-          <button type="button" data-filter="Urban Design" class="filter-btn px-4 py-2 rounded-sm font-mono text-xs uppercase tracking-[0.14em] border border-hairline text-charcoalMuted hover:border-charcoal hover:text-charcoal transition-colors cursor-pointer">
-            Urban Design
-          </button>
-        </div>
-      </div>
-
-      <!-- Asymmetric Architectural Project Grid -->
-      <div id="projectsGrid" class="mt-14 grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-x-10">
-        <!-- Injected dynamically via JS -->
-      </div>
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="portrait rv">
+      <div class="frame" id="portrait"><span class="initials">ED</span></div>
+      <div class="sticker"><b>ND + HND</b>Federal Polytechnic Nasarawa</div>
     </div>
-  </section>
-
-  <!-- =======================================================================
-       PRINCIPAL PROFILE, SOFTWARE STACK & STUDIO PHILOSOPHY
-  ======================================================================== -->
-  <section id="philosophy" class="py-20 sm:py-28 border-b border-hairline bg-stoneCard/50">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
-
-        <!-- Left Column: Principal Portrait Card + Interactive Upload + Solar Section -->
-        <div class="lg:col-span-5 space-y-8">
-          <div>
-            <span class="font-mono text-xs uppercase tracking-[0.2em] text-terracotta block mb-3">02 / Principal Designer &amp; Methodology</span>
-            <h2 class="font-serif text-3xl sm:text-5xl font-normal leading-tight">
-              Architecture rooted in climate, craft, and precise BIM documentation.
-            </h2>
-          </div>
-
-          <!-- Principal Portrait Frame -->
-          <div class="border border-hairline bg-stoneBg p-3.5 rounded-sm">
-            <div class="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-stoneCard border border-hairline">
-              <!-- ===============================================================
-                   YOUR PRINCIPAL PORTRAIT IMAGE TAG
-                   Automatically loads MY_PROFILE_PHOTO from the top of this file,
-                   or you can replace the src attribute below directly.
-              ================================================================ -->
-              <img
-                id="mainProfilePortraitImg"
-                data-profile-img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=85"
-                alt="Emmanuel 'Wizzy' Danlami — Architectural Designer & BIM Visualizer"
-                style="object-position: center 22%;"
-                onerror="this.src='https://placehold.co/800x1000/EBE8E1/1A1A19?text=Emmanuel+Wizzy+Danlami'"
-                class="w-full h-full object-cover grayscale-[8%] contrast-[1.03] transition-transform duration-700 hover:scale-[1.02]"
-              />
-
-              <!-- Live Photo Upload / Replace Controls -->
-              <div class="absolute bottom-3 right-3 flex items-center gap-2 z-20">
-                <button
-                  id="resetPortraitBtn"
-                  type="button"
-                  onclick="resetSavedPhoto()"
-                  title="Restore default portrait"
-                  class="hidden px-2.5 py-1.5 rounded-sm bg-stoneBg/95 backdrop-blur-xs border border-hairline font-mono text-[10px] uppercase tracking-wider text-charcoal hover:bg-terracotta hover:text-stoneBg hover:border-terracotta transition-colors cursor-pointer"
-                >
-                  Reset
-                </button>
-                <button
-                  type="button"
-                  onclick="toggleUploadDrawer()"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-stoneBg/95 backdrop-blur-xs border border-hairline font-mono text-[10px] uppercase tracking-wider text-charcoal hover:bg-charcoal hover:text-stoneBg transition-colors cursor-pointer shadow-xs"
-                >
-                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                  </svg>
-                  <span>Change Photo</span>
-                </button>
-              </div>
-
-              <!-- Slide-Up Upload Drawer inside Portrait Card -->
-              <div
-                id="photoUploadDrawer"
-                class="hidden absolute inset-x-3 bottom-12 z-30 p-3.5 rounded-sm bg-stoneBg/95 backdrop-blur-md border border-hairline shadow-lg space-y-2.5"
-              >
-                <div class="flex items-center justify-between">
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-terracotta">
-                    Upload Your Photo
-                  </span>
-                  <button
-                    type="button"
-                    onclick="toggleUploadDrawer(false)"
-                    class="font-mono text-[10px] uppercase tracking-wider text-charcoalMuted hover:text-charcoal cursor-pointer"
-                  >
-                    Close [X]
-                  </button>
-                </div>
-                <label
-                  for="devicePhotoPicker"
-                  class="w-full py-2 px-3 rounded-sm bg-charcoal text-stoneBg hover:bg-terracotta transition-colors font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                  </svg>
-                  <span>Select Photo From Device</span>
-                </label>
-                <div class="flex items-center gap-1.5">
-                  <input
-                    id="customPhotoUrlField"
-                    type="text"
-                    placeholder="Or paste image filename / URL..."
-                    class="flex-1 min-w-0 px-2.5 py-1.5 rounded-sm bg-stoneCard border border-hairline font-mono text-[11px] text-charcoal focus:outline-none focus:border-terracotta"
-                  />
-                  <button
-                    type="button"
-                    onclick="applyTypedPhotoUrl()"
-                    class="px-2.5 py-1.5 rounded-sm border border-hairline bg-stoneCard hover:bg-charcoal hover:text-stoneBg font-mono text-[10px] uppercase tracking-wider text-charcoal transition-colors cursor-pointer shrink-0"
-                  >
-                    Apply
-                  </button>
-                </div>
-              </div>
-
-              <input
-                id="devicePhotoPicker"
-                type="file"
-                accept="image/*"
-                onchange="handleDevicePhotoSelected(event)"
-                class="sr-only"
-              />
-            </div>
-
-            <div class="pt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-charcoalMuted">
-              <span>PLATE 01 // PRINCIPAL DESIGNER</span>
-              <span class="text-terracotta">EMMANUEL &ldquo;WIZZY&rdquo; DANLAMI</span>
-            </div>
-          </div>
-
-          <!-- Architectural Section Line Drawing SVG -->
-          <div class="p-6 border border-hairline bg-stoneBg rounded-sm">
-            <svg viewBox="0 0 400 180" class="w-full h-auto text-charcoal" fill="none" stroke="currentColor" stroke-width="1">
-              <!-- Ground Datum Line -->
-              <line x1="10" y1="150" x2="390" y2="150" stroke-width="1.5" />
-              <line x1="10" y1="154" x2="390" y2="154" stroke-dasharray="3 3" stroke-opacity="0.5" />
-              <!-- Deep Overhang Cantilever Section -->
-              <rect x="70" y="95" width="180" height="55" />
-              <rect x="45" y="83" width="230" height="12" fill="currentColor" fill-opacity="0.08" />
-              <!-- Courtyard Void & Stack Ventilation -->
-              <line x1="160" y1="95" x2="160" y2="150" stroke-dasharray="2 2" />
-              <rect x="275" y="115" width="75" height="35" />
-              <!-- High Savanna Sun Angle -->
-              <line x1="340" y1="20" x2="245" y2="95" stroke="#A84A32" stroke-dasharray="4 3" />
-              <circle cx="340" cy="20" r="5" stroke="#A84A32" />
-              <!-- Dimension Markers -->
-              <line x1="32" y1="83" x2="32" y2="150" stroke-opacity="0.5" />
-              <line x1="28" y1="83" x2="36" y2="83" />
-              <line x1="28" y1="150" x2="36" y2="150" />
-              <text x="12" y="120" font-family="Space Mono, monospace" font-size="8" fill="currentColor" stroke="none">4.2M</text>
-              <text x="260" y="34" font-family="Space Mono, monospace" font-size="7" fill="#A84A32" stroke="none">SOLAR SHADING</text>
-            </svg>
-            <div class="mt-3 flex justify-between font-mono text-[10px] text-charcoalMuted uppercase tracking-widest">
-              <span>FIG 2.1 &mdash; PASSIVE COURTYARD SECTION</span>
-              <span>SCALE 1:100</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Designer Bio, Nasarawa Poly Education, Core Principles & Software Stack -->
-        <div class="lg:col-span-7 space-y-10">
-          <!-- Principal Dossier Bio -->
-          <div class="border-t border-hairline pt-8 space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="font-mono text-xs uppercase tracking-widest text-terracotta">Principal Dossier // Emmanuel &ldquo;Wizzy&rdquo; Danlami</span>
-              <span class="font-mono text-[11px] uppercase tracking-wider text-charcoalMuted">HND &amp; ND Architectural Technology</span>
-            </div>
-            <p class="text-base sm:text-lg text-charcoal font-light leading-relaxed">
-              Emmanuel Danlami&mdash;widely known in studio circles as <strong class="font-medium">Wizzy</strong>&mdash;is a Nigerian Architectural Designer and 3D BIM Visualizer operating between <strong class="font-medium">Kaduna State</strong> and <strong class="font-medium">Abuja FCT</strong>. Trained at <strong class="font-medium">The Federal Polytechnic, Nasarawa</strong> (ND 2019&ndash;2021; HND 2022&ndash;2024), his practice bridges rigorous construction detailing with photorealistic daylight simulation and passive tropical design.
-            </p>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-3">
-              <div class="p-3.5 border border-hairline bg-stoneBg rounded-sm">
-                <span class="font-mono text-[10px] uppercase tracking-widest text-charcoalMuted block">Alma Mater</span>
-                <span class="font-serif text-lg text-charcoal mt-0.5 block">Fed. Poly Nasarawa</span>
-              </div>
-              <div class="p-3.5 border border-hairline bg-stoneBg rounded-sm">
-                <span class="font-mono text-[10px] uppercase tracking-widest text-charcoalMuted block">Academic Track</span>
-                <span class="font-serif text-lg text-charcoal mt-0.5 block">ND &rsquo;21 &bull; HND &rsquo;24</span>
-              </div>
-              <div class="p-3.5 border border-hairline bg-stoneBg rounded-sm col-span-2 sm:col-span-1">
-                <span class="font-mono text-[10px] uppercase tracking-widest text-charcoalMuted block">Active Corridors</span>
-                <span class="font-serif text-lg text-charcoal mt-0.5 block">Abuja &amp; Kaduna</span>
-              </div>
-            </div>
-
-            <!-- Social & Professional Network Links -->
-            <div class="pt-3 flex flex-wrap items-center gap-3">
-              <a
-                href="https://www.linkedin.com/in/emmanuel-danlami-60b970377"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2.5 px-4 py-2.5 border border-hairline bg-stoneBg hover:border-charcoal hover:text-terracotta transition-colors rounded-sm font-mono text-[11px] uppercase tracking-[0.14em] text-charcoal"
-              >
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
-                </svg>
-                <span>LinkedIn // Emmanuel Danlami</span>
-                <span>&nearr;</span>
-              </a>
-
-              <a
-                href="https://www.instagram.com/wizbrown_gram?bqrl=dHRncnlkMHExc3Zk&utm_source=qr"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2.5 px-4 py-2.5 border border-hairline bg-stoneBg hover:border-charcoal hover:text-terracotta transition-colors rounded-sm font-mono text-[11px] uppercase tracking-[0.14em] text-charcoal"
-              >
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2A5.8 5.8 0 0 1 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2M7.6 4A3.6 3.6 0 0 0 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4A3.6 3.6 0 0 0 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5A1.25 1.25 0 0 1 18.5 6.75A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75A1.25 1.25 0 0 1 17.25 5.5M12 7A5 5 0 0 1 17 12A5 5 0 0 1 12 17A5 5 0 0 1 7 12A5 5 0 0 1 12 7M12 9A3 3 0 0 0 9 12A3 3 0 0 0 12 15A3 3 0 0 0 15 12A3 3 0 0 0 12 9Z" />
-                </svg>
-                <span>Instagram // @wizbrown_gram</span>
-                <span>&nearr;</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Core Architectural Principles -->
-          <div class="border-t border-hairline pt-8 grid grid-cols-1 sm:grid-cols-12 gap-4">
-            <div class="sm:col-span-3 font-mono text-xs text-charcoalMuted uppercase tracking-widest">01 / Tectonics</div>
-            <div class="sm:col-span-9">
-              <h3 class="font-serif text-2xl mb-2">Honest Nigerian Materiality</h3>
-              <p class="text-sm sm:text-base text-charcoalMuted leading-relaxed font-light">
-                Every design privileges locally sourced, climate-resilient assemblies&mdash;compressed laterite earth blocks (CEB), bush-hammered Abuja granite, board-formed concrete, and seasoned Nigerian Iroko timber that ages gracefully through Harmattan dust and rainy seasons.
-              </p>
-            </div>
-          </div>
-
-          <div class="border-t border-hairline pt-8 grid grid-cols-1 sm:grid-cols-12 gap-4">
-            <div class="sm:col-span-3 font-mono text-xs text-charcoalMuted uppercase tracking-widest">02 / Savanna Climate</div>
-            <div class="sm:col-span-9">
-              <h3 class="font-serif text-2xl mb-2">Solar Geometry &amp; Courtyard Ventilation</h3>
-              <p class="text-sm sm:text-base text-charcoalMuted leading-relaxed font-light">
-                Drawing from traditional Northern Nigerian courtyard compounds (<em>Zaure</em> thresholds and shaded verandas), deep roof cantilevers and perforated solar screens block high-angle afternoon heat while channeling cross-breezes naturally.
-              </p>
-            </div>
-          </div>
-
-          <!-- Technical Software Stack Matrix -->
-          <div class="border-t border-hairline pt-8">
-            <div class="flex items-center justify-between mb-5">
-              <span class="font-mono text-xs text-terracotta uppercase tracking-widest">03 / Technical BIM &amp; Visualization Pipeline</span>
-              <span class="font-mono text-[10px] text-charcoalMuted uppercase tracking-wider">5 Core Studio Tools</span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <div class="p-4 border border-hairline bg-stoneBg rounded-sm">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-serif text-xl text-charcoal">Autodesk Revit</span>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-terracotta">BIM &amp; CD</span>
-                </div>
-                <p class="text-xs text-charcoalMuted leading-relaxed font-light">
-                  Full parametric 3D building information modeling, structural coordination, schedules, and council-ready working drawings.
-                </p>
-              </div>
-
-              <div class="p-4 border border-hairline bg-stoneBg rounded-sm">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-serif text-xl text-charcoal">AutoCAD</span>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-terracotta">2D Drafting</span>
-                </div>
-                <p class="text-xs text-charcoalMuted leading-relaxed font-light">
-                  Precision site layouts, orthographic floor plans, wall sections, joinery detailing, and statutory approval sheets.
-                </p>
-              </div>
-
-              <div class="p-4 border border-hairline bg-stoneBg rounded-sm">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-serif text-xl text-charcoal">SketchUp</span>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-terracotta">3D Massing</span>
-                </div>
-                <p class="text-xs text-charcoalMuted leading-relaxed font-light">
-                  Rapid volumetric massing studies, bespoke facade louver assemblies, and custom interior millwork modeling.
-                </p>
-              </div>
-
-              <div class="p-4 border border-hairline bg-stoneBg rounded-sm">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-serif text-xl text-charcoal">Enscape</span>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-terracotta">Real-Time Raytracing</span>
-                </div>
-                <p class="text-xs text-charcoalMuted leading-relaxed font-light">
-                  Physically accurate daylight studies, tactile PBR material rendering, and live client design reviews directly from Revit &amp; SketchUp.
-                </p>
-              </div>
-
-              <div class="p-4 border border-hairline bg-stoneBg rounded-sm sm:col-span-2">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-serif text-xl text-charcoal">Twinmotion</span>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-terracotta">Cinematic Walkthroughs</span>
-                </div>
-                <p class="text-xs text-charcoalMuted leading-relaxed font-light">
-                  Atmospheric 4K architectural animations, tropical vegetation landscaping, seasonal weather transitions, and interactive client presentations.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="rv">
+      <span class="kicker">✦ A little about me</span>
+      <h2>Nice to <em>meet you</em></h2>
+      <p class="big">I'm Emmanuel — an architectural designer who believes a home should feel as good as it looks.</p>
+      <p>I studied Architectural Technology at the Federal Polytechnic Nasarawa, earning my National Diploma and Higher National Diploma (2019–2024). For the past 2–3 years I've been designing homes for families from my base in Abuja and Kaduna, and working with clients around the world.</p>
+      <p>What I enjoy most is the moment a client sees their home in 3D for the first time and says, <em>"That's exactly it."</em> I'll listen closely, explain everything in plain language, and make sure you're confident before anything gets built.</p>
+      <div class="values">
+        <div class="value"><div class="ic">🏡</div><b>Made for you</b><span>Designs shaped around how your family really lives.</span></div>
+        <div class="value"><div class="ic">☀️</div><b>Built for our climate</b><span>Shade, airflow and natural light for comfort all year.</span></div>
+        <div class="value"><div class="ic">👀</div><b>See it first</b><span>Realistic 3D views so there are no surprises on site.</span></div>
       </div>
+      <div class="tools"><small>Tools I use:</small><span>Revit</span><span>AutoCAD</span><span>SketchUp</span><span>Enscape</span><span>Twinmotion</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- =======================================================================
-       ACADEMIC CREDENTIALS & SPECIFICATION INDEX
-  ======================================================================== -->
-  <section id="recognition" class="py-20 sm:py-28 border-b border-hairline">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-      <div class="mb-12">
-        <span class="font-mono text-xs uppercase tracking-[0.2em] text-terracotta block mb-3">03 / Credentials &amp; Capabilities</span>
-        <h2 class="font-serif text-3xl sm:text-5xl font-normal">Education &amp; Practice Index</h2>
-      </div>
-
-      <!-- Architectural Specification Sheet Table -->
-      <div class="border-t border-charcoal">
-        <div class="grid grid-cols-12 py-4 border-b border-hairline font-mono text-[11px] uppercase tracking-[0.16em] text-charcoalMuted">
-          <div class="col-span-3 sm:col-span-2">Period</div>
-          <div class="col-span-9 sm:col-span-5">Qualification / Core Competency</div>
-          <div class="hidden sm:block sm:col-span-3">Institution / Toolkit</div>
-          <div class="hidden sm:block sm:col-span-2 text-right">Focus</div>
-        </div>
-
-        <div class="divide-y divide-hairline text-sm">
-          <div class="grid grid-cols-12 py-5 items-baseline hover:bg-stoneCard/60 transition-colors px-1">
-            <div class="col-span-3 sm:col-span-2 font-mono text-xs text-charcoalMuted">2022 &mdash; 2024</div>
-            <div class="col-span-9 sm:col-span-5 font-serif text-xl">Higher National Diploma (HND), Architectural Technology</div>
-            <div class="col-span-9 col-start-4 sm:col-span-3 sm:col-start-auto text-charcoalMuted mt-1 sm:mt-0">The Federal Polytechnic, Nasarawa</div>
-            <div class="hidden sm:block sm:col-span-2 text-right font-mono text-xs text-terracotta">Distinction Track</div>
-          </div>
-
-          <div class="grid grid-cols-12 py-5 items-baseline hover:bg-stoneCard/60 transition-colors px-1">
-            <div class="col-span-3 sm:col-span-2 font-mono text-xs text-charcoalMuted">2019 &mdash; 2021</div>
-            <div class="col-span-9 sm:col-span-5 font-serif text-xl">National Diploma (ND), Architectural Technology</div>
-            <div class="col-span-9 col-start-4 sm:col-span-3 sm:col-start-auto text-charcoalMuted mt-1 sm:mt-0">The Federal Polytechnic, Nasarawa</div>
-            <div class="hidden sm:block sm:col-span-2 text-right font-mono text-xs text-charcoalMuted">Nasarawa State</div>
-          </div>
-
-          <div class="grid grid-cols-12 py-5 items-baseline hover:bg-stoneCard/60 transition-colors px-1">
-            <div class="col-span-3 sm:col-span-2 font-mono text-xs text-charcoalMuted">BIM &amp; CAD</div>
-            <div class="col-span-9 sm:col-span-5 font-serif text-xl">Architectural Working Drawings &amp; 3D Modeling</div>
-            <div class="col-span-9 col-start-4 sm:col-span-3 sm:col-start-auto text-charcoalMuted mt-1 sm:mt-0">Autodesk Revit, AutoCAD &amp; SketchUp</div>
-            <div class="hidden sm:block sm:col-span-2 text-right font-mono text-xs text-charcoalMuted">Abuja / Kaduna</div>
-          </div>
-
-          <div class="grid grid-cols-12 py-5 items-baseline hover:bg-stoneCard/60 transition-colors px-1">
-            <div class="col-span-3 sm:col-span-2 font-mono text-xs text-charcoalMuted">3D VISUALS</div>
-            <div class="col-span-9 sm:col-span-5 font-serif text-xl">Photorealistic Rendering &amp; Cinematic Walkthroughs</div>
-            <div class="col-span-9 col-start-4 sm:col-span-3 sm:col-start-auto text-charcoalMuted mt-1 sm:mt-0">Enscape &amp; Twinmotion</div>
-            <div class="hidden sm:block sm:col-span-2 text-right font-mono text-xs text-charcoalMuted">Client Pitch</div>
-          </div>
-
-          <div class="grid grid-cols-12 py-5 items-baseline hover:bg-stoneCard/60 transition-colors px-1">
-            <div class="col-span-3 sm:col-span-2 font-mono text-xs text-charcoalMuted">2024 &mdash; PRES</div>
-            <div class="col-span-9 sm:col-span-5 font-serif text-xl">Residential, Commercial &amp; Civic Design Consultancy</div>
-            <div class="col-span-9 col-start-4 sm:col-span-3 sm:col-start-auto text-charcoalMuted mt-1 sm:mt-0">Abuja FCT &amp; Kaduna Metropolis</div>
-            <div class="hidden sm:block sm:col-span-2 text-right font-mono text-xs text-terracotta">Active Practice</div>
-          </div>
-        </div>
-      </div>
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="kicker">✦ How I can help</span>
+      <h2>What I can do <em>for you</em></h2>
+      <p class="lead">Whether you're starting from an empty plot or already have a plan, I can help you at any stage.</p>
     </div>
-  </section>
-
-  <!-- =======================================================================
-       COMMISSION INQUIRY & DIRECT CONTACT
-  ======================================================================== -->
-  <section id="contact" class="py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        <!-- Studio Coordinates & Direct Contact -->
-        <div class="lg:col-span-5 space-y-8">
-          <div>
-            <span class="font-mono text-xs uppercase tracking-[0.2em] text-terracotta block mb-3">04 / Commission &amp; Collaboration</span>
-            <h2 class="font-serif text-4xl sm:text-5xl font-normal leading-tight">
-              Initiate a site dialogue.
-            </h2>
-            <p class="mt-4 text-sm sm:text-base text-charcoalMuted font-light leading-relaxed">
-              Available for architectural design commissions, Revit/AutoCAD working drawing packages, and high-impact Enscape &amp; Twinmotion visualizations across Abuja FCT, Kaduna State, and nationwide.
-            </p>
-          </div>
-
-          <div class="space-y-6 pt-4 border-t border-hairline">
-            <!-- Principal Avatar + Availability -->
-            <div class="flex items-center gap-3.5">
-              <img
-                id="avatarProfilePortraitImg"
-                data-profile-img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=85"
-                alt="Emmanuel 'Wizzy' Danlami"
-                style="object-position: center 22%;"
-                onerror="this.src='https://placehold.co/200x200/EBE8E1/1A1A19?text=WD'"
-                class="w-12 h-12 rounded-full object-cover border border-hairline shrink-0"
-              />
-              <div>
-                <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-charcoal">
-                  <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                  <span>Wizzy Danlami &bull; Open For Projects</span>
-                </div>
-                <span class="font-mono text-[11px] text-charcoalMuted block mt-0.5">Direct Design &amp; BIM Desk</span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 font-mono text-xs">
-              <div>
-                <span class="text-charcoalMuted uppercase tracking-widest block mb-1.5">Kaduna Studio</span>
-                <p class="leading-relaxed">Barnawa / Ungwan Rimi<br />Kaduna State, Nigeria</p>
-              </div>
-              <div>
-                <span class="text-charcoalMuted uppercase tracking-widest block mb-1.5">Abuja Liaison</span>
-                <p class="leading-relaxed">Maitama / Gwarinpa Corridor<br />Abuja FCT, Nigeria</p>
-              </div>
-            </div>
-
-            <div class="pt-2 space-y-1.5 font-mono text-xs">
-              <a href="mailto:emmanueldanlami7b@gmail.com" class="text-charcoal hover:text-terracotta transition-colors block break-all">
-                emmanueldanlami7b@gmail.com &rarr;
-              </a>
-              <a href="tel:08169335893" class="text-charcoalMuted hover:text-terracotta transition-colors block">
-                +234 (0) 816 933 5893 &rarr;
-              </a>
-            </div>
-
-            <!-- Social Profiles in Direct Contact Card -->
-            <div class="pt-3 border-t border-hairline flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em]">
-              <a
-                href="https://www.linkedin.com/in/emmanuel-danlami-60b970377"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-3 py-2 border border-hairline bg-stoneCard/60 hover:border-charcoal hover:text-terracotta transition-colors rounded-sm text-charcoal"
-              >
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
-                </svg>
-                <span>LinkedIn</span>
-                <span>&nearr;</span>
-              </a>
-              <a
-                href="https://www.instagram.com/wizbrown_gram?bqrl=dHRncnlkMHExc3Zk&utm_source=qr"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-3 py-2 border border-hairline bg-stoneCard/60 hover:border-charcoal hover:text-terracotta transition-colors rounded-sm text-charcoal"
-              >
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2A5.8 5.8 0 0 1 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2M7.6 4A3.6 3.6 0 0 0 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4A3.6 3.6 0 0 0 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5A1.25 1.25 0 0 1 18.5 6.75A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75A1.25 1.25 0 0 1 17.25 5.5M12 7A5 5 0 0 1 17 12A5 5 0 0 1 12 17A5 5 0 0 1 7 12A5 5 0 0 1 12 7M12 9A3 3 0 0 0 9 12A3 3 0 0 0 12 15A3 3 0 0 0 15 12A3 3 0 0 0 12 9Z" />
-                </svg>
-                <span>@wizbrown_gram</span>
-                <span>&nearr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Architectural Brief Form -->
-        <div class="lg:col-span-7">
-          <form id="commissionForm" class="p-6 sm:p-10 border border-hairline bg-stoneCard/60 rounded-sm space-y-6">
-            <div class="flex items-center justify-between border-b border-hairline pb-4">
-              <span class="font-mono text-xs uppercase tracking-[0.16em]">Project Brief Dossier</span>
-              <span class="font-mono text-[11px] text-charcoalMuted">DOC. REF // WD-NG-26</span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="clientName" class="block font-mono text-[11px] uppercase tracking-[0.14em] text-charcoalMuted mb-2">Client / Organization *</label>
-                <input
-                  type="text"
-                  id="clientName"
-                  required
-                  placeholder="Engr. Ibrahim Musa / Abuja Properties"
-                  class="w-full bg-stoneBg border border-hairline px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-charcoal transition-colors"
-                />
-              </div>
-              <div>
-                <label for="clientEmail" class="block font-mono text-[11px] uppercase tracking-[0.14em] text-charcoalMuted mb-2">Email Address *</label>
-                <input
-                  type="email"
-                  id="clientEmail"
-                  required
-                  placeholder="client@domain.ng"
-                  class="w-full bg-stoneBg border border-hairline px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-charcoal transition-colors"
-                />
-              </div>
-            </div>
-
-            <!-- Typology Selection Pills -->
-            <div>
-              <span class="block font-mono text-[11px] uppercase tracking-[0.14em] text-charcoalMuted mb-2.5">Service / Typology</span>
-              <div class="flex flex-wrap gap-2" id="typologyGroup">
-                <button type="button" data-typology="Residential Design" class="typology-pill active px-3.5 py-2 text-xs font-mono border border-charcoal bg-charcoal text-stoneBg rounded-sm cursor-pointer">
-                  Residential Design
-                </button>
-                <button type="button" data-typology="Commercial / Office" class="typology-pill px-3.5 py-2 text-xs font-mono border border-hairline bg-stoneBg text-charcoal hover:border-charcoal rounded-sm cursor-pointer">
-                  Commercial / Office
-                </button>
-                <button type="button" data-typology="Revit & AutoCAD Package" class="typology-pill px-3.5 py-2 text-xs font-mono border border-hairline bg-stoneBg text-charcoal hover:border-charcoal rounded-sm cursor-pointer">
-                  Revit &amp; AutoCAD Package
-                </button>
-                <button type="button" data-typology="Enscape / Twinmotion 3D" class="typology-pill px-3.5 py-2 text-xs font-mono border border-hairline bg-stoneBg text-charcoal hover:border-charcoal rounded-sm cursor-pointer">
-                  Enscape / Twinmotion 3D
-                </button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="siteLocation" class="block font-mono text-[11px] uppercase tracking-[0.14em] text-charcoalMuted mb-2">Site Location (Abuja / Kaduna / Other)</label>
-                <input
-                  type="text"
-                  id="siteLocation"
-                  placeholder="e.g. Maitama Abuja / Barnawa Kaduna"
-                  class="w-full bg-stoneBg border border-hairline px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-charcoal transition-colors"
-                />
-              </div>
-              <div>
-                <label for="budgetScale" class="block font-mono text-[11px] uppercase tracking-[0.14em] text-charcoalMuted mb-2">Estimated Project Scope</label>
-                <select
-                  id="budgetScale"
-                  class="w-full bg-stoneBg border border-hairline px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-charcoal transition-colors"
-                >
-                  <option value="3D Visualization & Walkthrough">3D Visualization &amp; Walkthrough Only</option>
-                  <option value="₦50M – ₦150M Construction">₦50M &ndash; ₦150M Residential Build</option>
-                  <option value="₦150M – ₦500M Construction">₦150M &ndash; ₦500M Commercial / Duplex</option>
-                  <option value="₦500M+ Institutional / Masterplan">₦500M+ Institutional / Estate</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label for="projectBrief" class="block font-mono text-[11px] uppercase tracking-[0.14em] text-charcoalMuted mb-2">Spatial &amp; Plot Brief *</label>
-              <textarea
-                id="projectBrief"
-                rows="4"
-                required
-                placeholder="Describe plot size (sqm), number of bedrooms or floors, desired Revit/AutoCAD deliverables, or timeline..."
-                class="w-full bg-stoneBg border border-hairline px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-charcoal transition-colors"
-              ></textarea>
-            </div>
-
-            <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <span class="font-mono text-[11px] text-charcoalMuted">Direct response from Wizzy within 24 hours.</span>
-              <button
-                type="submit"
-                class="px-7 py-3.5 bg-charcoal text-stoneBg font-mono text-xs uppercase tracking-[0.18em] hover:bg-terracotta transition-colors rounded-sm cursor-pointer"
-              >
-                Transmit Brief &rarr;
-              </button>
-            </div>
-
-            <!-- Inline Confirmation Banner -->
-            <div id="formFeedback" class="hidden p-4 border border-charcoal bg-stoneBg font-mono text-xs text-charcoal leading-relaxed"></div>
-          </form>
-        </div>
+    <div class="services">
+      <div class="service rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+        <h3>Home design</h3>
+        <p>We'll plan your rooms, layout and look together — bungalows, duplexes and penthouses designed around your family, budget and plot.</p>
+        <div class="good"><b>Great if:</b> you have land and an idea, but no plan yet.</div>
       </div>
-    </div>
-  </section>
-
-  <!-- =======================================================================
-       MINIMALIST ARCHITECTURAL FOOTER
-  ======================================================================== -->
-  <footer class="border-t border-hairline py-10 bg-stoneCard/40">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-charcoalMuted uppercase tracking-[0.16em]">
-      <span>&copy; 2026 EMMANUEL &ldquo;WIZZY&rdquo; DANLAMI &bull; ARCHITECTURAL DESIGN &amp; BIM</span>
-      <div class="flex flex-wrap items-center justify-center gap-5">
-        <a
-          href="https://www.linkedin.com/in/emmanuel-danlami-60b970377"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-charcoalMuted hover:text-terracotta transition-colors"
-        >
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
-          </svg>
-          <span>LinkedIn</span>
-        </a>
-        <a
-          href="https://www.instagram.com/wizbrown_gram?bqrl=dHRncnlkMHExc3Zk&utm_source=qr"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-charcoalMuted hover:text-terracotta transition-colors"
-        >
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2A5.8 5.8 0 0 1 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2M7.6 4A3.6 3.6 0 0 0 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4A3.6 3.6 0 0 0 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6M17.25 5.5A1.25 1.25 0 0 1 18.5 6.75A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75A1.25 1.25 0 0 1 17.25 5.5M12 7A5 5 0 0 1 17 12A5 5 0 0 1 12 17A5 5 0 0 1 7 12A5 5 0 0 1 12 7M12 9A3 3 0 0 0 9 12A3 3 0 0 0 12 15A3 3 0 0 0 15 12A3 3 0 0 0 12 9Z" />
-          </svg>
-          <span>Instagram</span>
-        </a>
-        <span>+234 816 933 5893</span>
+      <div class="service rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3>Building drawings</h3>
+        <p>Clear, detailed plans, sections and elevations prepared in Revit and AutoCAD — ready for approval and for your builder on site.</p>
+        <div class="good"><b>Great if:</b> you're ready to get approval and start building.</div>
       </div>
-      <a href="#top" class="text-charcoal hover:text-terracotta transition-colors">Back to Datum &uarr;</a>
-    </div>
-  </footer>
-
-  <!-- =======================================================================
-       PROJECT MONOGRAPH DRAWER / MODAL
-  ======================================================================== -->
-  <div id="monographModal" class="fixed inset-0 z-50 invisible opacity-0 bg-charcoal/60 backdrop-blur-xs flex justify-end" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div id="monographBackdrop" class="fixed inset-0" onclick="closeMonographModal()"></div>
-
-    <div id="monographPanel" class="relative z-10 w-full max-w-3xl bg-stoneBg h-full overflow-y-auto border-l border-hairline translate-x-full flex flex-col justify-between">
-      <div>
-        <!-- Sticky Drawer Top Bar -->
-        <div class="sticky top-0 z-20 bg-stoneBg/95 backdrop-blur-md px-6 sm:px-10 py-5 border-b border-hairline flex items-center justify-between">
-          <span id="modalIndex" class="font-mono text-xs uppercase tracking-[0.18em] text-terracotta">CASE STUDY // 01</span>
-          <button
-            type="button"
-            onclick="closeMonographModal()"
-            class="font-mono text-xs uppercase tracking-[0.16em] px-3 py-1.5 border border-hairline hover:border-charcoal rounded-sm transition-colors cursor-pointer"
-          >
-            Close [ESC]
-          </button>
-        </div>
-
-        <!-- Drawer Content -->
-        <div class="p-6 sm:p-10 space-y-8">
-          <div>
-            <div id="modalCategory" class="font-mono text-xs uppercase tracking-[0.16em] text-charcoalMuted mb-2">Residential</div>
-            <h2 id="modalTitle" class="font-serif text-3xl sm:text-5xl font-normal leading-tight">Project Title</h2>
-          </div>
-
-          <!-- Primary Project Photograph -->
-          <div class="aspect-[16/10] w-full overflow-hidden rounded-sm border border-hairline bg-stoneCard">
-            <img id="modalMainImg" src="" alt="" class="w-full h-full object-cover" />
-          </div>
-
-          <!-- Technical Architectural Metadata Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 py-6 border-y border-hairline font-mono text-xs">
-            <div>
-              <span class="text-charcoalMuted block text-[10px] uppercase tracking-widest mb-1">Location</span>
-              <span id="modalLocation" class="text-charcoal">Abuja / Kaduna</span>
-            </div>
-            <div>
-              <span class="text-charcoalMuted block text-[10px] uppercase tracking-widest mb-1">Year</span>
-              <span id="modalYear" class="text-charcoal">2025</span>
-            </div>
-            <div>
-              <span class="text-charcoalMuted block text-[10px] uppercase tracking-widest mb-1">Gross Area</span>
-              <span id="modalArea" class="text-charcoal">480 m&sup2;</span>
-            </div>
-            <div>
-              <span class="text-charcoalMuted block text-[10px] uppercase tracking-widest mb-1">Climate Impact</span>
-              <span id="modalPerformance" class="text-terracotta">-44% Cooling Load</span>
-            </div>
-          </div>
-
-          <!-- Architectural Narrative -->
-          <div class="space-y-4">
-            <h3 class="font-mono text-xs uppercase tracking-[0.16em] text-charcoalMuted">Bioclimatic &amp; Spatial Strategy</h3>
-            <p id="modalDescription" class="text-base text-charcoal font-light leading-relaxed"></p>
-            <p id="modalTectonics" class="text-sm text-charcoalMuted font-light leading-relaxed"></p>
-          </div>
-
-          <!-- Material & Software Palette Swatches -->
-          <div>
-            <h3 class="font-mono text-xs uppercase tracking-[0.16em] text-charcoalMuted mb-4">Regional Material &amp; BIM Specification</h3>
-            <div id="modalMaterials" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
-          </div>
-
-          <!-- Secondary Detail View -->
-          <div class="space-y-2">
-            <span class="font-mono text-[10px] uppercase tracking-widest text-charcoalMuted block">PLATE B // INTERIOR &amp; TECTONIC STUDY</span>
-            <div class="aspect-[16/9] w-full overflow-hidden rounded-sm border border-hairline bg-stoneCard">
-              <img id="modalDetailImg" src="" alt="" class="w-full h-full object-cover" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Drawer Footer -->
-      <div class="px-6 sm:px-10 py-6 border-t border-hairline bg-stoneCard/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span class="font-mono text-[11px] text-charcoalMuted uppercase tracking-wider">WIZZY DANLAMI // ABUJA &amp; KADUNA PORTFOLIO</span>
-        <a href="#contact" onclick="closeMonographModal()" class="w-full sm:w-auto text-center px-5 py-2.5 bg-charcoal text-stoneBg font-mono text-xs uppercase tracking-[0.16em] hover:bg-terracotta transition-colors rounded-sm">
-          Request Similar Design &rarr;
-        </a>
+      <div class="service rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+        <h3>3D renders &amp; walkthroughs</h3>
+        <p>Photo-realistic images and video walkthroughs in Enscape and Twinmotion, so you can see your home — day or night — before it's built.</p>
+        <div class="good"><b>Great if:</b> you already have a plan and want to see it come alive.</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- =======================================================================
-       APPLICATION JAVASCRIPT (CLEAN, SELF-CONTAINED, ERROR-FREE)
-  ======================================================================== -->
-  <script>
-    var PHOTO_STORAGE_KEY = 'wizzy-saved-profile-photo';
+<!-- ============ PROCESS ============ -->
+<section class="steps-sec">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="kicker">✦ Simple &amp; stress-free</span>
+      <h2>How we'll <em>work together</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><h4>We talk</h4><p>Tell me about your family, your plot, your budget and the home you're dreaming of. A WhatsApp chat is a great start.</p></div>
+      <div class="step rv"><h4>I sketch ideas</h4><p>I create a layout and early 3D shapes, and we adjust them together until it feels right to you.</p></div>
+      <div class="step rv"><h4>You see it in 3D</h4><p>I produce realistic renders so you can see colours, materials and lighting — and request any changes.</p></div>
+      <div class="step rv"><h4>Ready to build</h4><p>You receive clear drawings for approval and construction, and I'm still here to answer questions.</p></div>
+    </div>
+  </div>
+</section>
 
-    // 1. Apply Photo Across All Portrait Slots
-    function setAllProfileImages(imageSrc, isCustomUploaded) {
-      var imgs = document.querySelectorAll('[data-profile-img]');
-      for (var i = 0; i < imgs.length; i++) {
-        imgs[i].src = imageSrc;
-        if (typeof MY_PHOTO_FOCUS !== 'undefined' && MY_PHOTO_FOCUS) {
-          imgs[i].style.objectPosition = MY_PHOTO_FOCUS;
-        }
-      }
-      var resetBtn = document.getElementById('resetPortraitBtn');
-      if (resetBtn) {
-        if (isCustomUploaded) {
-          resetBtn.classList.remove('hidden');
-        } else {
-          resetBtn.classList.add('hidden');
-        }
-      }
-    }
+<!-- ============ CTA ============ -->
+<div class="cta">
+  <div class="wrap">
+    <div class="cta-card rv">
+      <img src="images/4bed2-corner-hedge.jpg" alt="" loading="lazy">
+      <div>
+        <h2>Got a plot and a <em>dream?</em></h2>
+        <p>Let's turn it into a home you'll be proud of. Send me a message — there's no obligation, just a friendly chat.</p>
+        <a class="btn btn-white" href="#contact">Start the conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
 
-    // Initialize Portrait on Load (Uses MY_PROFILE_PHOTO or browser-saved upload)
-    (function initProfilePhoto() {
-      var savedPhoto = null;
-      try {
-        savedPhoto = localStorage.getItem(PHOTO_STORAGE_KEY);
-      } catch (e) {}
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px">
+      <span class="kicker">✦ Commission inquiry</span>
+      <h2>Tell me about your <em>future home</em></h2>
+      <p class="lead" style="max-width:620px;margin-top:14px">Share your brief and I'll reply within 24 hours with next steps.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="rv">
+        <div class="c-block"><span class="lbl">Email</span><a class="v" href="mailto:emmanueldanlami7b@gmail.com">emmanueldanlami7b@gmail.com</a></div>
+        <div class="c-block"><span class="lbl">Phone / WhatsApp</span><a class="v" href="https://wa.me/2348169335893" target="_blank" rel="noopener">+234 (0) 816 933 5893</a></div>
+        <div class="c-block"><span class="lbl">Kaduna studio</span><span class="v">Barnawa / Ungwan Rimi</span></div>
+        <div class="c-block"><span class="lbl">Abuja liaison</span><span class="v">Maitama / Gwarinpa corridor</span></div>
+        <div class="c-block"><span class="lbl">Social</span><span class="v">
+          <a href="https://www.linkedin.com/in/emmanuel-danlami-60b970377" target="_blank" rel="noopener">LinkedIn ↗</a> &nbsp;·&nbsp;
+          <a href="https://www.instagram.com/wizbrown_gram" target="_blank" rel="noopener">Instagram ↗</a></span></div>
 
-      if (savedPhoto) {
-        setAllProfileImages(savedPhoto, true);
-      } else if (typeof MY_PROFILE_PHOTO !== 'undefined' && MY_PROFILE_PHOTO) {
-        setAllProfileImages(MY_PROFILE_PHOTO, false);
-      }
-    })();
+        <div class="qa" id="faq">
+          <span class="lbl" style="color:var(--clay)">Quick answers</span>
+          <details><summary>Do you work outside Abuja and Kaduna?</summary><p>Yes — I work with clients anywhere in Nigeria and abroad. We can do everything over WhatsApp, email and video calls.</p></details>
+          <details><summary>Can you prepare drawings for approval?</summary><p>Yes. I prepare detailed plans, sections and elevations in Revit and AutoCAD for approval and for your builder.</p></details>
+          <details><summary>Can I get only 3D renders of my existing plan?</summary><p>Absolutely. Send me your drawings and I'll model and render them in Enscape or Twinmotion.</p></details>
+          <details><summary>How much does a design cost?</summary><p>It depends on the size of the house and what you need. Send your brief and I'll reply with a clear quote.</p></details>
+        </div>
+      </div>
 
-    // Toggle the live photo upload drawer on the portrait card
-    function toggleUploadDrawer(forceOpen) {
-      var drawer = document.getElementById('photoUploadDrawer');
-      if (!drawer) return;
-      if (typeof forceOpen === 'boolean') {
-        drawer.classList.toggle('hidden', !forceOpen);
-      } else {
-        drawer.classList.toggle('hidden');
-      }
-    }
+      <form class="brief rv" id="brief" novalidate>
+        <label class="f"><span class="lbl">Client name *</span><input name="name" autocomplete="name" placeholder="Your name or company"></label>
+        <label class="f"><span class="lbl">Email *</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+        <div class="f full"><span class="lbl">What do you need?</span>
+          <div class="svc">
+            <label><input type="radio" name="service" value="Architectural design" checked><span>Architectural design</span></label>
+            <label><input type="radio" name="service" value="Working drawings"><span>Working drawings</span></label>
+            <label><input type="radio" name="service" value="3D renders & walkthrough"><span>3D renders &amp; walkthrough</span></label>
+            <label><input type="radio" name="service" value="Full service"><span>Full service</span></label>
+          </div></div>
+        <label class="f"><span class="lbl">Site location</span><input name="site" placeholder="e.g. Gwarinpa, Abuja"></label>
+        <label class="f"><span class="lbl">Budget range</span>
+          <select name="budget"><option>₦50M – ₦100M</option><option>₦100M – ₦250M</option><option>₦250M – ₦500M</option><option>₦500M+</option><option>Not sure yet</option></select></label>
+        <label class="f full"><span class="lbl">Spatial brief *</span><textarea name="msg" placeholder="Number of rooms, plot size, style, timeline…"></textarea></label>
+        <p class="ferr full" id="ferr">Please add your name, a valid email and a short brief.</p>
+        <div class="ffoot full"><span class="lbl">Reply within 24 hours</span><button class="start" type="submit">Prepare my brief →</button></div>
+        <div class="result full" id="result">
+          <span class="lbl" style="color:var(--clay)">Your brief is ready — send it by WhatsApp or email</span>
+          <pre id="briefText"></pre>
+          <div class="rrow">
+            <a class="start" id="sendWa" target="_blank" rel="noopener" style="background:#25D366">Send on WhatsApp</a>
+            <a class="sq" id="sendMail">Send by email</a>
+            <button class="sq" type="button" id="copyBrief">Copy brief</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
 
-    // Handle photo chosen from user's phone or PC
-    function handleDevicePhotoSelected(event) {
-      var input = event && event.target ? event.target : document.getElementById('devicePhotoPicker');
-      var file = input && input.files && input.files[0];
-      if (!file) return;
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <a class="logo" href="#top"><span class="mark">EOD</span><span><b>Emmanuel Danlami</b><small>Architectural Designer · Abuja &amp; Kaduna</small></span></a>
+      <nav><a href="#work">Case Studies</a><a href="#about">Profile &amp; Stack</a><a href="#services">Services</a><a href="#faq">FAQ</a><a href="#contact">Commission</a></nav>
+    </div>
+    <div class="bottom"><span>© <span id="year">2026</span> Emmanuel Danlami. All rights reserved.</span><span>Designed with care in Nigeria 🇳🇬</span></div>
+  </div>
+</footer>
 
-      var reader = new FileReader();
-      reader.onload = function (loadEvent) {
-        var dataUrl = loadEvent.target.result;
-        setAllProfileImages(dataUrl, true);
-        try {
-          localStorage.setItem(PHOTO_STORAGE_KEY, dataUrl);
-        } catch (err) {}
-        toggleUploadDrawer(false);
-      };
-      reader.readAsDataURL(file);
-      if (input) input.value = '';
-    }
+<a class="wa-float" href="https://wa.me/2348169335893?text=Hi%20Emmanuel%2C%20I%20saw%20your%20website%20and%20I'd%20like%20to%20talk%20about%20a%20home%20design." target="_blank" rel="noopener" aria-label="Chat with me on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+  <span>Chat with me</span>
+</a>
 
-    // Handle pasted URL or filename in the drawer
-    function applyTypedPhotoUrl() {
-      var field = document.getElementById('customPhotoUrlField');
-      var val = field ? field.value.trim() : '';
-      if (!val) return;
-      setAllProfileImages(val, true);
-      try {
-        localStorage.setItem(PHOTO_STORAGE_KEY, val);
-      } catch (err) {}
-      field.value = '';
-      toggleUploadDrawer(false);
-    }
+<!-- ============ PROJECT VIEWER ============ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb-stage">
+    <div class="lb-img" id="lbImg"></div>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="lb-cap" id="lbCap"></div>
+    <div class="lb-thumbs" id="lbThumbs"></div>
+  </div>
+  <aside class="lb-panel">
+    <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+    <span class="kicker" id="lbTag"></span>
+    <h3 id="lbTitle"></h3>
+    <p id="lbDesc"></p>
+    <div class="spec" id="lbSpec"></div>
+    <a class="btn btn-primary" href="#contact" id="lbCta">I'd like a home like this</a>
+    <p class="hint">Use ← → keys or swipe to browse photos</p>
+  </aside>
+</div>
 
-    // Reset back to MY_PROFILE_PHOTO defined in code
-    function resetSavedPhoto() {
-      try {
-        localStorage.removeItem(PHOTO_STORAGE_KEY);
-      } catch (err) {}
-      setAllProfileImages(MY_PROFILE_PHOTO, false);
-      toggleUploadDrawer(false);
-    }
+<script>
+/* =========================================================
+   YOUR PROJECTS — edit text here, add new projects by copying
+   one block. Put photos in the "images" folder.
+   ========================================================= */
+const PROJECTS = [
+  {
+    title: '3‑Bedroom Bungalow',
+    category: 'Bungalows',
+    tagline: 'A warm family home in a walled garden compound.',
+    description: 'A single‑storey family home with a gabled entrance porch, a white‑and‑stone façade and a charcoal roof. It sits in a walled compound with paved garden paths, outdoor seating and a covered carport.',
+    details: { Bedrooms: '3', Levels: 'Single storey', Roof: 'Gabled porch, charcoal roof' },
+    photos: [
+      ['images/3bed-front-dusk.jpg', 'Front elevation at dusk'],
+      ['images/3bed-aerial.jpg', 'Aerial view of the compound'],
+      ['images/3bed-side-carport.jpg', 'Side elevation with carport']
+    ]
+  },
+  {
+    title: '4‑Bedroom Bungalow I',
+    category: 'Bungalows',
+    tagline: 'Contemporary living with stone, greenery and a pergola.',
+    description: 'A contemporary hip‑roof bungalow in grey and white with natural stone cladding, a pergola with climbing plants and raised planter beds. The compound has a brick‑pier boundary wall, a portico gate and a pergola carport for two cars.',
+    details: { Bedrooms: '4', Levels: 'Single storey', Roof: 'Hip roof, decorative cornice' },
+    photos: [
+      ['images/4bed1-front-entrance.jpg', 'Front entrance and planter bed'],
+      ['images/4bed1-pergola.jpg', 'Pergola with climbing plants'],
+      ['images/4bed1-side-corner-windows.jpg', 'Side elevation with corner windows'],
+      ['images/4bed1-driveway-carport.jpg', 'Driveway and carport'],
+      ['images/4bed1-gate-wall.jpg', 'Entrance gate and boundary wall'],
+      ['images/4bed1-site-plan.jpg', 'Roof and site plan']
+    ]
+  },
+  {
+    title: '4‑Bedroom Bungalow II',
+    category: 'Bungalows',
+    tagline: 'A bold, elegant entrance with a columned porch.',
+    description: 'A hip‑roof bungalow with a dark roof and a projecting white cornice over a columned entrance. White walls with charcoal bands, tall black‑framed windows, a granite entrance step with planters, a paved parking apron and a hedge along the road.',
+    details: { Bedrooms: '4', Levels: 'Single storey', Roof: 'Hip roof, projecting cornice' },
+    photos: [
+      ['images/4bed2-front.jpg', 'Front elevation'],
+      ['images/4bed2-corner-hedge.jpg', 'Corner view with hedge boundary']
+    ]
+  },
+  {
+    title: '5‑Bedroom Penthouse',
+    category: 'Penthouses',
+    tagline: 'A grand family home with a penthouse level and balcony.',
+    description: 'A larger family home combining a ground‑floor entrance wing with an upper penthouse level. White walls with charcoal and stone‑textured bands, a glass‑railed balcony, tall slot windows and a lion statue on a plinth at the entrance.',
+    details: { Bedrooms: '5', Levels: 'Ground floor + penthouse', Roof: 'Multi‑pitched hip roof' },
+    photos: [
+      ['images/5bed-front-side-balcony.jpg', 'Front‑side view with balcony'],
+      ['images/5bed-front.jpg', 'Front elevation'],
+      ['images/5bed-side-penthouse.jpg', 'Side view with penthouse level']
+    ]
+  }
+];
 
-    // 2. Light / Dark Mode Switcher
-    function toggleThemeMode() {
-      var root = document.documentElement;
-      var willBeDark = !root.classList.contains('dark');
-      root.classList.toggle('dark', willBeDark);
-      try {
-        localStorage.setItem('wizzy-atelier-theme', willBeDark ? 'dark' : 'light');
-      } catch (e) {}
-    }
+/* Your portrait: put a photo in the images folder and write its name here, e.g. 'images/me.jpg' */
+const PORTRAIT = 'images/Profile.jpg';
 
-    // 3. Mobile Menu Helpers
-    function toggleMobileMenu() {
-      var menu = document.getElementById('mobileMenu');
-      if (menu) menu.classList.toggle('hidden');
-    }
+/* Your WhatsApp number and email (used by the contact form) */
+const WHATSAPP = '2348169335893';
+const EMAIL = 'emmanueldanlami7b@gmail.com';
 
-    function closeMobileMenu() {
-      var menu = document.getElementById('mobileMenu');
-      if (menu) menu.classList.add('hidden');
-    }
+/* ---------------- (no need to edit below this line) ---------------- */
+const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+document.getElementById('year').textContent = new Date().getFullYear();
+if (PORTRAIT) $('#portrait').innerHTML = `<img src="${PORTRAIT}" alt="Emmanuel Danlami">`;
 
-    // 4. Abuja FCT & Kaduna State Architectural Case Studies Dataset
-    var projectsData = [
-      {
-        id: "zaria-courtyard-house",
-        index: "01",
-        title: "Zaria Courtyard Residence",
-        category: "Residential",
-        location: "GRA Zaria, Kaduna State",
-        year: "2025",
-        area: "520 m²",
-        performance: "-44% Cooling Load",
-        span: "md:col-span-7",
-        aspect: "aspect-[16/11]",
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85",
-        detailImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",
-        description: "Designed for the hot-dry Guinea Savanna climate of Zaria, this 5-bedroom family residence reinterprets traditional Hausa compound architecture. A shaded Zaure entrance threshold leads into an inward-facing landscaped courtyard that moderates Harmattan dust and afternoon heat.",
-        tectonics: "Modeled in Autodesk Revit with AutoCAD working details and rendered in Enscape. Constructed with locally pressed compressed laterite earth blocks (CEB), deep 1.8-meter concrete roof overhangs, and seasoned Nigerian Iroko timber screens.",
-        materials: [
-          { name: "Zaria Compressed Laterite", color: "#9E5338" },
-          { name: "Seasoned Iroko Louvers", color: "#6E4730" },
-          { name: "Revit + Enscape BIM", color: "#5C5B57" }
-        ]
-      },
-      {
-        id: "maitama-bioclimatic-hub",
-        index: "02",
-        title: "Maitama Bioclimatic Tech Hub",
-        category: "Commercial",
-        location: "Maitama District, Abuja FCT",
-        year: "2025",
-        area: "1,850 m²",
-        performance: "-48% Solar Gain",
-        span: "md:col-span-5",
-        aspect: "aspect-[4/5]",
-        image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85",
-        detailImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
-        description: "A four-storey commercial workspace and innovation hub in Maitama, Abuja, wrapped in a solar-calibrated concrete brise-soleil facade that eliminates harsh west-facing glare while preserving panoramic views toward Aso Rock.",
-        tectonics: "Developed in Autodesk Revit and SketchUp with Twinmotion daylight and pedestrian walkthrough animations. Features bush-hammered Mpape granite plinths, low-E double glazing, and a 45,000-liter underground rainwater cistern.",
-        materials: [
-          { name: "Mpape Bush-Hammered Granite", color: "#7C7972" },
-          { name: "Precast Brise-Soleil Concrete", color: "#C6C2B8" },
-          { name: "Revit + Twinmotion", color: "#3A3A38" }
-        ]
-      },
-      {
-        id: "barnawa-terraced-duplexes",
-        index: "03",
-        title: "Barnawa Terraced Duplexes",
-        category: "Residential",
-        location: "Barnawa GRA, Kaduna Metropolis",
-        year: "2024",
-        area: "1,120 m²",
-        performance: "4-Unit Cluster",
-        span: "md:col-span-5",
-        aspect: "aspect-[4/5]",
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85",
-        detailImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85",
-        description: "A contemporary four-unit semi-detached residential development in Barnawa, Kaduna, balancing private family outdoor terraces with high-efficiency cross-ventilation shafts across every living space.",
-        tectonics: "Complete AutoCAD statutory submission set and Revit structural/architectural coordination, paired with Enscape interior daylight renders showcasing terrazzo floors and perforated clay screen walls.",
-        materials: [
-          { name: "Perforated Clay Breeze Blocks", color: "#B86B4B" },
-          { name: "In-Situ White Terrazzo", color: "#DFDCD4" },
-          { name: "AutoCAD + Revit + Enscape", color: "#686661" }
-        ]
-      },
-      {
-        id: "gwarinpa-civic-library",
-        index: "04",
-        title: "Gwarinpa Civic & Community Library",
-        category: "Civic & Cultural",
-        location: "Gwarinpa Estate, Abuja FCT",
-        year: "2024",
-        area: "1,420 m²",
-        performance: "100% Daylit Reading Hall",
-        span: "md:col-span-7",
-        aspect: "aspect-[16/10]",
-        image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=1400&q=85",
-        detailImage: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=85",
-        description: "Conceived as an HND architectural design thesis and civic proposal for Gwarinpa, Abuja, this public library and digital literacy center replaces closed air-conditioned boxes with north-lit sawtooth roof monitors and shaded amphitheater steps.",
-        tectonics: "Modeled in SketchUp and Revit with cinematic Twinmotion presentation sequences. Steel-truss clear spans allow flexible community reading rooms shaded by anodized bronze aluminum louvers.",
-        materials: [
-          { name: "Anodized Bronze Solar Fins", color: "#8C6D46" },
-          { name: "Fair-Faced Reinforced Concrete", color: "#B8B4AA" },
-          { name: "SketchUp + Twinmotion", color: "#4D5D53" }
-        ]
-      },
-      {
-        id: "kaduna-riverfront-canopy",
-        index: "05",
-        title: "Kaduna Riverfront & Market Canopy",
-        category: "Urban Design",
-        location: "River Kaduna Corridor, Kaduna",
-        year: "2024",
-        area: "4,600 m²",
-        performance: "Flood-Resilient Promenade",
-        span: "md:col-span-6",
-        aspect: "aspect-[16/11]",
-        image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1400&q=85",
-        detailImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85",
-        description: "An ecological urban renewal masterplan along the River Kaduna waterfront, combining elevated flood-resilient pedestrian walkways, bioswale stormwater retention terraces, and modular solar-roofed artisan market pavilions.",
-        tectonics: "Masterplanned in AutoCAD and SketchUp with Twinmotion crowd and vegetation simulations, utilizing permeable laterite paving blocks and galvanized steel-and-timber canopy modules.",
-        materials: [
-          { name: "Permeable Laterite Pavers", color: "#A25C43" },
-          { name: "Galvanized Steel & Timber Truss", color: "#7E7A70" },
-          { name: "AutoCAD + SketchUp + Twinmotion", color: "#4A5C48" }
-        ]
-      },
-      {
-        id: "jabi-lakefront-workspace",
-        index: "06",
-        title: "Jabi Lakefront Boutique Workspace",
-        category: "Commercial",
-        location: "Jabi District, Abuja FCT",
-        year: "2025",
-        area: "940 m²",
-        performance: "Lake Breeze Stack Cooling",
-        span: "md:col-span-6",
-        aspect: "aspect-[16/11]",
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=85",
-        detailImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
-        description: "Positioned near Jabi Lake in Abuja, this three-level boutique studio and co-working pavilion features cantilevered lakeside terraces, slatted timber sun-breakers, and a central atrium that draws cool lake breezes upward.",
-        tectonics: "Produced end-to-end in Autodesk Revit for BIM documentation and Enscape for warm dusk exterior and interior lighting studies.",
-        materials: [
-          { name: "Opepe Timber Sun-Breakers", color: "#7B4F32" },
-          { name: "Honed Abuja Limestone", color: "#D6D1C4" },
-          { name: "Revit + Enscape", color: "#52524E" }
-        ]
-      }
-    ];
+/* Projects + filters */
+let filter = 'All';
+const cats = ['All', ...new Set(PROJECTS.map(p => p.category))];
+function drawFilters(){
+  $('#filters').innerHTML = cats.map(c => {
+    const n = c === 'All' ? PROJECTS.length : PROJECTS.filter(p => p.category === c).length;
+    return `<button class="${c===filter?'on':''}" data-c="${c}">${c === 'All' ? 'All homes' : c} (${n})</button>`;
+  }).join('');
+  $$('#filters button').forEach(b => b.onclick = () => { filter = b.dataset.c; drawFilters();
+    $$('.project').forEach(el => el.classList.toggle('hide', filter !== 'All' && el.dataset.c !== filter)); });
+}
+$('#projects').innerHTML = PROJECTS.map((p, i) => `
+  <button class="project rv" data-i="${i}" data-c="${p.category}" aria-label="View ${p.title}">
+    <div class="ph"><img src="${p.photos[0][0]}" alt="${p.title} — ${p.photos[0][1]}" loading="lazy">
+      <span class="pill">${p.category}</span>
+      <span class="count">📷 See all ${p.photos.length} photos</span></div>
+    <div class="info"><h3>${p.title}</h3><p>${p.tagline}</p>
+      <div class="facts">${Object.entries(p.details).map(([k,v]) => `<span>${k === 'Bedrooms' ? v + ' bedrooms' : v}</span>`).join('')}</div></div>
+  </button>`).join('');
+$$('.project').forEach(el => el.onclick = () => openLB(+el.dataset.i));
+drawFilters();
 
-    // 5. Render Abuja & Kaduna Project Grid
-    function renderProjects(filterCategory) {
-      var grid = document.getElementById('projectsGrid');
-      if (!grid) return;
+/* Hero image slowly changes between projects */
+let hi = 0;
+setInterval(() => { hi = (hi + 1) % PROJECTS.length; const img = $('#heroMain');
+  img.style.opacity = 0; setTimeout(() => { img.src = PROJECTS[hi].photos[0][0]; img.alt = PROJECTS[hi].title; img.style.opacity = 1; }, 500); }, 5000);
+$('#heroMain').style.cursor = 'pointer'; $('#heroMain').onclick = () => openLB(hi);
 
-      var category = filterCategory || 'all';
-      var filtered = category === 'all'
-        ? projectsData
-        : projectsData.filter(function (p) { return p.category === category; });
+/* Project viewer */
+let cur = 0, ph = 0, lastFocus;
+function showPhoto(k){ const p = PROJECTS[cur]; ph = (k + p.photos.length) % p.photos.length;
+  $('#lbImg').innerHTML = `<img src="${p.photos[ph][0]}" alt="${p.title} — ${p.photos[ph][1]}">`;
+  $('#lbCap').textContent = `${p.photos[ph][1]}  ·  ${ph + 1} of ${p.photos.length}`;
+  $$('#lbThumbs button').forEach((t, j) => t.classList.toggle('on', j === ph)); }
+function openLB(i){ cur = i; const p = PROJECTS[i]; lastFocus = document.activeElement;
+  $('#lbTag').textContent = p.category; $('#lbTitle').textContent = p.title; $('#lbDesc').textContent = p.description;
+  $('#lbSpec').innerHTML = Object.entries(p.details).map(([k,v]) => `<div><span>${k}</span><b>${v}</b></div>`).join('');
+  $('#lbThumbs').innerHTML = p.photos.map(f => `<button aria-label="${f[1]}"><img src="${f[0]}" alt=""></button>`).join('');
+  $$('#lbThumbs button').forEach((t, j) => t.onclick = () => showPhoto(j));
+  showPhoto(0); $('#lb').classList.add('open'); document.body.style.overflow = 'hidden'; $('#lbClose').focus(); }
+function closeLB(){ $('#lb').classList.remove('open'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+$('#lbClose').onclick = closeLB;
+$('#lbPrev').onclick = () => showPhoto(ph - 1);
+$('#lbNext').onclick = () => showPhoto(ph + 1);
+$('#lbCta').onclick = () => { closeLB(); const t = $('#brief textarea'); t.value = `I'd like a design similar to your ${PROJECTS[cur].title}. `; setTimeout(() => t.focus(), 700); };
+document.addEventListener('keydown', e => { if (!$('#lb').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLB(); if (e.key === 'ArrowRight') showPhoto(ph + 1); if (e.key === 'ArrowLeft') showPhoto(ph - 1); });
+let sx = 0; $('.lb-stage').addEventListener('touchstart', e => sx = e.touches[0].clientX, {passive:true});
+$('.lb-stage').addEventListener('touchend', e => { const d = e.changedTouches[0].clientX - sx; if (Math.abs(d) > 40) showPhoto(ph + (d < 0 ? 1 : -1)); });
 
-      grid.innerHTML = filtered.map(function (project) {
-        return (
-          '<article onclick="openMonographModal(\'' + project.id + '\')" class="project-card ' + project.span + ' group cursor-pointer flex flex-col">' +
-            '<div class="' + project.aspect + ' w-full overflow-hidden rounded-sm bg-stoneCard border border-hairline relative">' +
-              '<img ' +
-                'src="' + project.image + '" ' +
-                'alt="' + project.title + ' — ' + project.location + '" ' +
-                'onerror="this.src=\'https://placehold.co/1200x800/EBE8E1/1A1A19?text=' + encodeURIComponent(project.title) + '\'" ' +
-                'class="project-card-img w-full h-full object-cover" ' +
-              '/>' +
-              '<div class="absolute top-3.5 left-3.5 bg-stoneBg/90 backdrop-blur-xs px-2.5 py-1 rounded-sm border border-hairline font-mono text-[10px] tracking-widest uppercase">' +
-                'CS // ' + project.index +
-              '</div>' +
-              '<div class="absolute bottom-3.5 right-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-charcoal text-stoneBg px-3 py-1.5 rounded-sm font-mono text-[10px] tracking-[0.14em] uppercase">' +
-                'Inspect Case Study +' +
-              '</div>' +
-            '</div>' +
-            '<div class="pt-4 flex items-baseline justify-between gap-4 border-b border-hairline pb-4">' +
-              '<div>' +
-                '<h3 class="font-serif text-2xl sm:text-3xl font-normal group-hover:text-terracotta transition-colors">' +
-                  project.title +
-                '</h3>' +
-                '<p class="font-mono text-xs text-charcoalMuted uppercase tracking-[0.12em] mt-1">' +
-                  project.location + ' &mdash; ' + project.category +
-                '</p>' +
-              '</div>' +
-              '<span class="font-mono text-xs text-charcoalMuted shrink-0">' + project.year + '</span>' +
-            '</div>' +
-          '</article>'
-        );
-      }).join('');
-    }
+/* Light / dark mode (remembers the visitor's choice) */
+const root = document.documentElement;
+try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch(e) {}
+$('#theme').onclick = () => { root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  try { localStorage.setItem('theme', root.dataset.theme); } catch(e) {} };
 
-    // Category Filter Listeners
-    var filterButtons = document.querySelectorAll('.filter-btn');
-    for (var f = 0; f < filterButtons.length; f++) {
-      filterButtons[f].addEventListener('click', function () {
-        for (var j = 0; j < filterButtons.length; j++) {
-          filterButtons[j].classList.remove('active', 'bg-charcoal', 'text-stoneBg', 'border-charcoal');
-          filterButtons[j].classList.add('border-hairline', 'text-charcoalMuted');
-        }
-        this.classList.add('active', 'bg-charcoal', 'text-stoneBg', 'border-charcoal');
-        this.classList.remove('border-hairline', 'text-charcoalMuted');
-        renderProjects(this.getAttribute('data-filter'));
-      });
-    }
+/* Mobile menu */
+const menu = $('#menu'), burger = $('#burger');
+burger.onclick = () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); };
+$$('#menu a').forEach(a => a.onclick = () => { menu.classList.remove('open'); burger.setAttribute('aria-expanded', false); });
 
-    // 6. Case Study Monograph Drawer Controls
-    function openMonographModal(projectId) {
-      var project = null;
-      for (var i = 0; i < projectsData.length; i++) {
-        if (projectsData[i].id === projectId) {
-          project = projectsData[i];
-          break;
-        }
-      }
-      if (!project) return;
+/* Nav shadow + active link */
+addEventListener('scroll', () => $('#nav').classList.toggle('scrolled', scrollY > 10), {passive:true});
+if ('IntersectionObserver' in window) {
+  const links = [...$$('#menu li:not(.m-start) a')];
+  const so = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + x.target.id)); }), {rootMargin:'-45% 0px -50% 0px'});
+  ['work','about','services','contact'].forEach(id => so.observe(document.getElementById(id)));
+}
 
-      document.getElementById('modalIndex').textContent = 'CASE STUDY // ' + project.index;
-      document.getElementById('modalCategory').textContent = project.category;
-      document.getElementById('modalTitle').textContent = project.title;
-      document.getElementById('modalLocation').textContent = project.location;
-      document.getElementById('modalYear').textContent = project.year;
-      document.getElementById('modalArea').textContent = project.area;
-      document.getElementById('modalPerformance').textContent = project.performance;
-      document.getElementById('modalDescription').textContent = project.description;
-      document.getElementById('modalTectonics').textContent = project.tectonics;
+/* Commission form → WhatsApp / email */
+$('#brief').addEventListener('submit', e => { e.preventDefault();
+  const f = e.target, get = n => f[n].value.trim();
+  if (!get('name') || !/^\S+@\S+\.\S+$/.test(get('email')) || !get('msg')) { $('#ferr').classList.add('show'); return; }
+  $('#ferr').classList.remove('show');
+  const text = `Project brief for Emmanuel Danlami\n\nClient: ${get('name')}\nEmail: ${get('email')}\nService: ${f.service.value}\nSite: ${get('site') || '—'}\nBudget: ${get('budget')}\n\nBrief:\n${get('msg')}`;
+  $('#briefText').textContent = text;
+  $('#sendWa').href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+  $('#sendMail').href = `mailto:${EMAIL}?subject=${encodeURIComponent('Project brief — ' + get('name'))}&body=${encodeURIComponent(text)}`;
+  $('#result').style.display = 'block'; $('#result').scrollIntoView({behavior:'smooth', block:'nearest'}); });
+$('#copyBrief').onclick = async () => { try { await navigator.clipboard.writeText($('#briefText').textContent); $('#copyBrief').textContent = 'Copied ✓'; } catch(e) { $('#copyBrief').textContent = 'Select text to copy'; } setTimeout(() => $('#copyBrief').textContent = 'Copy brief', 2000); };
 
-      var mainImg = document.getElementById('modalMainImg');
-      mainImg.src = project.image;
-      mainImg.alt = project.title;
-
-      var detailImg = document.getElementById('modalDetailImg');
-      detailImg.src = project.detailImage;
-      detailImg.alt = project.title + ' Detail';
-
-      var materialsEl = document.getElementById('modalMaterials');
-      materialsEl.innerHTML = project.materials.map(function (m) {
-        return (
-          '<div class="p-3 border border-hairline bg-stoneCard/60 rounded-sm flex items-center gap-3">' +
-            '<span class="w-4 h-4 rounded-full border border-charcoal/20 shrink-0" style="background-color: ' + m.color + ';"></span>' +
-            '<span class="font-mono text-[11px] text-charcoal">' + m.name + '</span>' +
-          '</div>'
-        );
-      }).join('');
-
-      var modal = document.getElementById('monographModal');
-      var panel = document.getElementById('monographPanel');
-      modal.classList.remove('invisible', 'opacity-0');
-      modal.classList.add('visible', 'opacity-100');
-      panel.classList.remove('translate-x-full');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMonographModal() {
-      var modal = document.getElementById('monographModal');
-      var panel = document.getElementById('monographPanel');
-      panel.classList.add('translate-x-full');
-      modal.classList.remove('visible', 'opacity-100');
-      modal.classList.add('invisible', 'opacity-0');
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        closeMonographModal();
-        toggleUploadDrawer(false);
-      }
-    });
-
-    // 7. Typology Pills & Commission Brief Form Submission
-    var selectedTypology = 'Residential Design';
-    var typologyPills = document.querySelectorAll('.typology-pill');
-    for (var t = 0; t < typologyPills.length; t++) {
-      typologyPills[t].addEventListener('click', function () {
-        for (var k = 0; k < typologyPills.length; k++) {
-          typologyPills[k].classList.remove('active', 'bg-charcoal', 'text-stoneBg', 'border-charcoal');
-          typologyPills[k].classList.add('bg-stoneBg', 'text-charcoal', 'border-hairline');
-        }
-        this.classList.add('active', 'bg-charcoal', 'text-stoneBg', 'border-charcoal');
-        this.classList.remove('bg-stoneBg', 'text-charcoal', 'border-hairline');
-        selectedTypology = this.getAttribute('data-typology');
-      });
-    }
-
-    var commissionForm = document.getElementById('commissionForm');
-    if (commissionForm) {
-      commissionForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var name = document.getElementById('clientName').value.trim();
-        var email = document.getElementById('clientEmail').value.trim();
-        var location = document.getElementById('siteLocation').value.trim() || 'Abuja / Kaduna';
-        var budget = document.getElementById('budgetScale').value;
-
-        var feedback = document.getElementById('formFeedback');
-        feedback.classList.remove('hidden');
-        feedback.innerHTML =
-          '<strong class="text-terracotta uppercase block mb-1">Dossier Logged // Emmanuel &ldquo;Wizzy&rdquo; Danlami</strong>' +
-          'Thank you, ' + name + '. Your <strong>' + selectedTypology + '</strong> brief for <strong>' + location + '</strong> (' + budget + ') has been prepared for <strong>emmanueldanlami7b@gmail.com</strong>. ' +
-          'Wizzy will follow up via <strong>' + email + '</strong> or phone (08169335893) within 24 hours.';
-
-        commissionForm.reset();
-      });
-    }
-
-    // Initial Render
-    renderProjects('all');
-  </script>
+/* Gentle reveal on scroll */
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), {threshold:.12});
+  $$('.rv').forEach(el => io.observe(el));
+} else $$('.rv').forEach(el => el.classList.add('in'));
+</script>
 </body>
 </html>
